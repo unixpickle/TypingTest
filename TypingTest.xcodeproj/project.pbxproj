@@ -1,0 +1,295 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FAC4194B14B2317F0035FFAF /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAC4194A14B2317F0035FFAF /* Cocoa.framework */; };
+		FAC4195514B2317F0035FFAF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FAC4195314B2317F0035FFAF /* InfoPlist.strings */; };
+		FAC4195714B2317F0035FFAF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC4195614B2317F0035FFAF /* main.m */; };
+		FAC4195B14B2317F0035FFAF /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = FAC4195914B2317F0035FFAF /* Credits.rtf */; };
+		FAC4195E14B2317F0035FFAF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC4195D14B2317F0035FFAF /* AppDelegate.m */; };
+		FAC4196114B2317F0035FFAF /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAC4195F14B2317F0035FFAF /* MainMenu.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		FAC4194614B2317F0035FFAF /* TypingTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TypingTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		FAC4194A14B2317F0035FFAF /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		FAC4194D14B2317F0035FFAF /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		FAC4194E14B2317F0035FFAF /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		FAC4194F14B2317F0035FFAF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		FAC4195214B2317F0035FFAF /* TypingTest-Info.plist */ = {isa = PBXFileReference; path = "TypingTest-Info.plist"; sourceTree = "<group>"; };
+		FAC4195414B2317F0035FFAF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		FAC4195614B2317F0035FFAF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		FAC4195814B2317F0035FFAF /* TypingTest-Prefix.pch */ = {isa = PBXFileReference; path = "TypingTest-Prefix.pch"; sourceTree = "<group>"; };
+		FAC4195A14B2317F0035FFAF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		FAC4195C14B2317F0035FFAF /* AppDelegate.h */ = {isa = PBXFileReference; path = AppDelegate.h; sourceTree = "<group>"; };
+		FAC4195D14B2317F0035FFAF /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		FAC4196014B2317F0035FFAF /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FAC4194314B2317F0035FFAF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FAC4194B14B2317F0035FFAF /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FAC4193B14B2317F0035FFAF = {
+			isa = PBXGroup;
+			children = (
+				FAC4195014B2317F0035FFAF /* TypingTest */,
+				FAC4194914B2317F0035FFAF /* Frameworks */,
+				FAC4194714B2317F0035FFAF /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FAC4194714B2317F0035FFAF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FAC4194614B2317F0035FFAF /* TypingTest.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FAC4194914B2317F0035FFAF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FAC4194A14B2317F0035FFAF /* Cocoa.framework */,
+				FAC4194C14B2317F0035FFAF /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FAC4194C14B2317F0035FFAF /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FAC4194D14B2317F0035FFAF /* AppKit.framework */,
+				FAC4194E14B2317F0035FFAF /* CoreData.framework */,
+				FAC4194F14B2317F0035FFAF /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		FAC4195014B2317F0035FFAF /* TypingTest */ = {
+			isa = PBXGroup;
+			children = (
+				FAC4195C14B2317F0035FFAF /* AppDelegate.h */,
+				FAC4195D14B2317F0035FFAF /* AppDelegate.m */,
+				FAC4195F14B2317F0035FFAF /* MainMenu.xib */,
+				FAC4195114B2317F0035FFAF /* Supporting Files */,
+			);
+			path = TypingTest;
+			sourceTree = "<group>";
+		};
+		FAC4195114B2317F0035FFAF /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FAC4195214B2317F0035FFAF /* TypingTest-Info.plist */,
+				FAC4195314B2317F0035FFAF /* InfoPlist.strings */,
+				FAC4195614B2317F0035FFAF /* main.m */,
+				FAC4195814B2317F0035FFAF /* TypingTest-Prefix.pch */,
+				FAC4195914B2317F0035FFAF /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FAC4194514B2317F0035FFAF /* TypingTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FAC4196414B2317F0035FFAF /* Build configuration list for PBXNativeTarget "TypingTest" */;
+			buildPhases = (
+				FAC4194214B2317F0035FFAF /* Sources */,
+				FAC4194314B2317F0035FFAF /* Frameworks */,
+				FAC4194414B2317F0035FFAF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TypingTest;
+			productName = TypingTest;
+			productReference = FAC4194614B2317F0035FFAF /* TypingTest.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FAC4193D14B2317F0035FFAF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = FAC4194014B2317F0035FFAF /* Build configuration list for PBXProject "TypingTest" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = FAC4193B14B2317F0035FFAF;
+			productRefGroup = FAC4194714B2317F0035FFAF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FAC4194514B2317F0035FFAF /* TypingTest */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FAC4194414B2317F0035FFAF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FAC4195514B2317F0035FFAF /* InfoPlist.strings in Resources */,
+				FAC4195B14B2317F0035FFAF /* Credits.rtf in Resources */,
+				FAC4196114B2317F0035FFAF /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FAC4194214B2317F0035FFAF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FAC4195714B2317F0035FFAF /* main.m in Sources */,
+				FAC4195E14B2317F0035FFAF /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		FAC4195314B2317F0035FFAF /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FAC4195414B2317F0035FFAF /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		FAC4195914B2317F0035FFAF /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FAC4195A14B2317F0035FFAF /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		FAC4195F14B2317F0035FFAF /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FAC4196014B2317F0035FFAF /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		FAC4196214B2317F0035FFAF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		FAC4196314B2317F0035FFAF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		FAC4196514B2317F0035FFAF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TypingTest/TypingTest-Prefix.pch";
+				INFOPLIST_FILE = "TypingTest/TypingTest-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		FAC4196614B2317F0035FFAF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "TypingTest/TypingTest-Prefix.pch";
+				INFOPLIST_FILE = "TypingTest/TypingTest-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FAC4194014B2317F0035FFAF /* Build configuration list for PBXProject "TypingTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FAC4196214B2317F0035FFAF /* Debug */,
+				FAC4196314B2317F0035FFAF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FAC4196414B2317F0035FFAF /* Build configuration list for PBXNativeTarget "TypingTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FAC4196514B2317F0035FFAF /* Debug */,
+				FAC4196614B2317F0035FFAF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FAC4193D14B2317F0035FFAF /* Project object */;
+}
