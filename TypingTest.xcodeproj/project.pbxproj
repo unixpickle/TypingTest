@@ -16,6 +16,7 @@
 		FAC4196914B2321C0035FFAF /* ANTypingTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC4196814B2321C0035FFAF /* ANTypingTest.m */; };
 		FAC4196C14B233690035FFAF /* ANTypingTestLetter.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC4196B14B233690035FFAF /* ANTypingTestLetter.m */; };
 		FAC4197014B236190035FFAF /* ANTypingTestView.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC4196F14B236190035FFAF /* ANTypingTestView.m */; };
+		FAC4197314B24C120035FFAF /* KeyWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC4197214B24C120035FFAF /* KeyWindow.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,8 @@
 		FAC4196B14B233690035FFAF /* ANTypingTestLetter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANTypingTestLetter.m; sourceTree = "<group>"; };
 		FAC4196E14B236190035FFAF /* ANTypingTestView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANTypingTestView.h; sourceTree = "<group>"; };
 		FAC4196F14B236190035FFAF /* ANTypingTestView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANTypingTestView.m; sourceTree = "<group>"; };
+		FAC4197114B24C120035FFAF /* KeyWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyWindow.h; sourceTree = "<group>"; };
+		FAC4197214B24C120035FFAF /* KeyWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyWindow.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +97,8 @@
 				FAC4196D14B236060035FFAF /* ANTypingTest */,
 				FAC4195C14B2317F0035FFAF /* AppDelegate.h */,
 				FAC4195D14B2317F0035FFAF /* AppDelegate.m */,
+				FAC4197114B24C120035FFAF /* KeyWindow.h */,
+				FAC4197214B24C120035FFAF /* KeyWindow.m */,
 				FAC4195F14B2317F0035FFAF /* MainMenu.xib */,
 				FAC4195114B2317F0035FFAF /* Supporting Files */,
 			);
@@ -193,6 +198,7 @@
 				FAC4196914B2321C0035FFAF /* ANTypingTest.m in Sources */,
 				FAC4196C14B233690035FFAF /* ANTypingTestLetter.m in Sources */,
 				FAC4197014B236190035FFAF /* ANTypingTestView.m in Sources */,
+				FAC4197314B24C120035FFAF /* KeyWindow.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

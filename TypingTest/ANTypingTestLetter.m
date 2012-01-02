@@ -20,4 +20,8 @@
     return self;
 }
 
++ (ANTypingTestLetter *)letterWithUnichar:(unichar)aLetter {
+    return [[ANTypingTestLetter alloc] initWithLetter:aLetter state:ANTypingTestLetterStateDefault];
+}
+
 @end

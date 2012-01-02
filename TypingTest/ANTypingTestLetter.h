@@ -23,5 +23,6 @@ typedef enum {
 @property (readwrite) ANTypingTestLetterState state;
 
 - (id)initWithLetter:(unichar)aLetter state:(ANTypingTestLetterState)aState;
++ (ANTypingTestLetter *)letterWithUnichar:(unichar)aLetter;
 
 @end

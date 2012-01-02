@@ -7,9 +7,10 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "ANTypingTestView.h"
 
 @interface AppDelegate : NSObject <NSApplicationDelegate> {
-    
+    ANTypingTestView * testView;
 }
 
 @property (assign) IBOutlet NSWindow * window;

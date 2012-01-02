@@ -15,6 +15,19 @@
 @synthesize letters;
 @synthesize currentLetter;
 
+- (id)initWithTestString:(NSString *)aString {
+    if ((self = [super init])) {
+        NSMutableArray * lettersMutable = [[NSMutableArray alloc] initWithCapacity:[aString length]];
+        for (NSUInteger i = 0; i < [aString length]; i++) {
+            unichar theChar = [aString characterAtIndex:i];
+            ANTypingTestLetter * letter = [ANTypingTestLetter letterWithUnichar:theChar];
+            [lettersMutable addObject:letter];
+        }
+        letters = [[NSArray alloc] initWithArray:lettersMutable];
+    }
+    return self;
+}
+
 - (void)beginTest {
     endDate = nil;
     startDate = [NSDate date];
@@ -42,13 +55,15 @@
     }
 }
 
-- (void)charTyped:(unichar)theChar {
-    if ([self isFinishedTest]) return;
+- (BOOL)charTyped:(unichar)theChar {
+    if ([self isFinishedTest]) return NO;
     ANTypingTestLetter * letter = [letters objectAtIndex:currentLetter++];
     if (theChar == [letter letter]) {
         [letter setState:ANTypingTestLetterStateCorrect];
+        return YES;
     } else {
         [letter setState:ANTypingTestLetterStateIncorrect];
+        return NO;
     }
 }
 

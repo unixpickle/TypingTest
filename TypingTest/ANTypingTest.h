@@ -21,12 +21,14 @@
 @property (readonly) NSArray * letters;
 @property (readwrite) NSUInteger currentLetter;
 
+- (id)initWithTestString:(NSString *)aString;
+
 - (void)beginTest;
 - (void)endTest;
 - (NSTimeInterval)testTime;
 - (BOOL)isFinishedTest;
 
 - (void)deleteLastChar;
-- (void)charTyped:(unichar)theChar;
+- (BOOL)charTyped:(unichar)theChar;
 
 @end
