@@ -15,6 +15,7 @@
 		FAC4196114B2317F0035FFAF /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAC4195F14B2317F0035FFAF /* MainMenu.xib */; };
 		FAC4196914B2321C0035FFAF /* ANTypingTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC4196814B2321C0035FFAF /* ANTypingTest.m */; };
 		FAC4196C14B233690035FFAF /* ANTypingTestLetter.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC4196B14B233690035FFAF /* ANTypingTestLetter.m */; };
+		FAC4197014B236190035FFAF /* ANTypingTestView.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC4196F14B236190035FFAF /* ANTypingTestView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,8 @@
 		FAC4196814B2321C0035FFAF /* ANTypingTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANTypingTest.m; sourceTree = "<group>"; };
 		FAC4196A14B233690035FFAF /* ANTypingTestLetter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANTypingTestLetter.h; sourceTree = "<group>"; };
 		FAC4196B14B233690035FFAF /* ANTypingTestLetter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANTypingTestLetter.m; sourceTree = "<group>"; };
+		FAC4196E14B236190035FFAF /* ANTypingTestView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANTypingTestView.h; sourceTree = "<group>"; };
+		FAC4196F14B236190035FFAF /* ANTypingTestView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANTypingTestView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,14 +91,11 @@
 		FAC4195014B2317F0035FFAF /* TypingTest */ = {
 			isa = PBXGroup;
 			children = (
+				FAC4196D14B236060035FFAF /* ANTypingTest */,
 				FAC4195C14B2317F0035FFAF /* AppDelegate.h */,
 				FAC4195D14B2317F0035FFAF /* AppDelegate.m */,
 				FAC4195F14B2317F0035FFAF /* MainMenu.xib */,
 				FAC4195114B2317F0035FFAF /* Supporting Files */,
-				FAC4196714B2321C0035FFAF /* ANTypingTest.h */,
-				FAC4196814B2321C0035FFAF /* ANTypingTest.m */,
-				FAC4196A14B233690035FFAF /* ANTypingTestLetter.h */,
-				FAC4196B14B233690035FFAF /* ANTypingTestLetter.m */,
 			);
 			path = TypingTest;
 			sourceTree = "<group>";
@@ -110,6 +110,19 @@
 				FAC4195914B2317F0035FFAF /* Credits.rtf */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FAC4196D14B236060035FFAF /* ANTypingTest */ = {
+			isa = PBXGroup;
+			children = (
+				FAC4196714B2321C0035FFAF /* ANTypingTest.h */,
+				FAC4196814B2321C0035FFAF /* ANTypingTest.m */,
+				FAC4196A14B233690035FFAF /* ANTypingTestLetter.h */,
+				FAC4196B14B233690035FFAF /* ANTypingTestLetter.m */,
+				FAC4196E14B236190035FFAF /* ANTypingTestView.h */,
+				FAC4196F14B236190035FFAF /* ANTypingTestView.m */,
+			);
+			name = ANTypingTest;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -179,6 +192,7 @@
 				FAC4195E14B2317F0035FFAF /* AppDelegate.m in Sources */,
 				FAC4196914B2321C0035FFAF /* ANTypingTest.m in Sources */,
 				FAC4196C14B233690035FFAF /* ANTypingTestLetter.m in Sources */,
+				FAC4197014B236190035FFAF /* ANTypingTestView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
