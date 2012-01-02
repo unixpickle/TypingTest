@@ -13,6 +13,8 @@
 		FAC4195B14B2317F0035FFAF /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = FAC4195914B2317F0035FFAF /* Credits.rtf */; };
 		FAC4195E14B2317F0035FFAF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC4195D14B2317F0035FFAF /* AppDelegate.m */; };
 		FAC4196114B2317F0035FFAF /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAC4195F14B2317F0035FFAF /* MainMenu.xib */; };
+		FAC4196914B2321C0035FFAF /* ANTypingTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC4196814B2321C0035FFAF /* ANTypingTest.m */; };
+		FAC4196C14B233690035FFAF /* ANTypingTestLetter.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC4196B14B233690035FFAF /* ANTypingTestLetter.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,14 +23,18 @@
 		FAC4194D14B2317F0035FFAF /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		FAC4194E14B2317F0035FFAF /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		FAC4194F14B2317F0035FFAF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		FAC4195214B2317F0035FFAF /* TypingTest-Info.plist */ = {isa = PBXFileReference; path = "TypingTest-Info.plist"; sourceTree = "<group>"; };
+		FAC4195214B2317F0035FFAF /* TypingTest-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TypingTest-Info.plist"; sourceTree = "<group>"; };
 		FAC4195414B2317F0035FFAF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		FAC4195614B2317F0035FFAF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		FAC4195814B2317F0035FFAF /* TypingTest-Prefix.pch */ = {isa = PBXFileReference; path = "TypingTest-Prefix.pch"; sourceTree = "<group>"; };
+		FAC4195814B2317F0035FFAF /* TypingTest-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TypingTest-Prefix.pch"; sourceTree = "<group>"; };
 		FAC4195A14B2317F0035FFAF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
-		FAC4195C14B2317F0035FFAF /* AppDelegate.h */ = {isa = PBXFileReference; path = AppDelegate.h; sourceTree = "<group>"; };
+		FAC4195C14B2317F0035FFAF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		FAC4195D14B2317F0035FFAF /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		FAC4196014B2317F0035FFAF /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		FAC4196714B2321C0035FFAF /* ANTypingTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANTypingTest.h; sourceTree = "<group>"; };
+		FAC4196814B2321C0035FFAF /* ANTypingTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANTypingTest.m; sourceTree = "<group>"; };
+		FAC4196A14B233690035FFAF /* ANTypingTestLetter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANTypingTestLetter.h; sourceTree = "<group>"; };
+		FAC4196B14B233690035FFAF /* ANTypingTestLetter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANTypingTestLetter.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +92,10 @@
 				FAC4195D14B2317F0035FFAF /* AppDelegate.m */,
 				FAC4195F14B2317F0035FFAF /* MainMenu.xib */,
 				FAC4195114B2317F0035FFAF /* Supporting Files */,
+				FAC4196714B2321C0035FFAF /* ANTypingTest.h */,
+				FAC4196814B2321C0035FFAF /* ANTypingTest.m */,
+				FAC4196A14B233690035FFAF /* ANTypingTestLetter.h */,
+				FAC4196B14B233690035FFAF /* ANTypingTestLetter.m */,
 			);
 			path = TypingTest;
 			sourceTree = "<group>";
@@ -167,6 +177,8 @@
 			files = (
 				FAC4195714B2317F0035FFAF /* main.m in Sources */,
 				FAC4195E14B2317F0035FFAF /* AppDelegate.m in Sources */,
+				FAC4196914B2321C0035FFAF /* ANTypingTest.m in Sources */,
+				FAC4196C14B233690035FFAF /* ANTypingTestLetter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
