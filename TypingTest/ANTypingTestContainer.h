@@ -11,6 +11,7 @@
 
 @interface ANTypingTestContainer : NSScrollView <ANTypingTestViewDelegate> {
     ANTypingTestView * testView;
+    NSClipView * clipView;
 }
 
 @property (readonly) ANTypingTestView * testView;

@@ -13,11 +13,15 @@
 @synthesize window = _window;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-    ANTypingTest * test = [[ANTypingTest alloc] initWithTestString:@"The quick brown fox jumps over the lazy dog. Holy crap, it looks like the fox just ate a lump of dog shit. This is one gross fox if you ask me."];
-    testView = [[ANTypingTestView alloc] initWithFrame:[self.window.contentView bounds]
-                                            typingTest:test];
-    [self.window.contentView addSubview:testView];
-    [self.window makeFirstResponder:testView];
+    ANTypingTest * test = [[ANTypingTest alloc] initWithTestString:@"This is a basic typing test. Letters you type incorrectly will appear in red. Soon I must make incorrect letters/characters have a red background so that you can tell if you mess up on spaces."];
+    ANTypingTestView * testView = [[ANTypingTestView alloc] initWithFrame:[self.window.contentView bounds]
+                                                               typingTest:test];
+    NSRect testFrame = NSMakeRect(0, [self.window.contentView frame].size.height - 59,
+                                  [self.window.contentView frame].size.width, 59);
+    ANTypingTestContainer * container = [[ANTypingTestContainer alloc] initWithFrame:testFrame
+                                                                      typingTestView:testView];
+    [self.window.contentView addSubview:container];
+    [self.window makeFirstResponder:container];
 }
 
 @end

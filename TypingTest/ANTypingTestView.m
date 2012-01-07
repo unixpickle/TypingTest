@@ -37,13 +37,24 @@
         
         CFAttributedStringSetAttribute(testString, CFRangeMake(0, [typingTest.letters count]), kCTForegroundColorAttributeName, defaultColor);
                 
-        // set the string's line spacing
+        // set the string's line spacing and line break
         CGFloat lineSpacing = 12;
-        struct CTParagraphStyleSetting setting;
-        setting.spec = kCTParagraphStyleSpecifierLineSpacing;
-        setting.valueSize = sizeof(CGFloat);
-        setting.value = &lineSpacing;
-        CTParagraphStyleRef pStyle = CTParagraphStyleCreate(&setting, 1);
+        CTLineBreakMode breakMode = kCTLineBreakByWordWrapping;
+        
+        struct CTParagraphStyleSetting spacingSetting;
+        spacingSetting.spec = kCTParagraphStyleSpecifierLineSpacingAdjustment;
+        spacingSetting.valueSize = sizeof(CGFloat);
+        spacingSetting.value = &lineSpacing;
+        
+        struct CTParagraphStyleSetting breakSetting;
+        breakSetting.spec = kCTParagraphStyleSpecifierLineBreakMode;
+        breakSetting.valueSize = sizeof(breakMode);
+        breakSetting.value = &breakMode;
+        struct CTParagraphStyleSetting settings[2] = {
+            spacingSetting, breakSetting
+        };
+        
+        CTParagraphStyleRef pStyle = CTParagraphStyleCreate(settings, 2);
         CFAttributedStringSetAttribute(testString, CFRangeMake(0, [typingTest.letters count]), kCTParagraphStyleAttributeName, pStyle);
         CFRetain(pStyle);
     }
@@ -51,10 +62,8 @@
 }
 
 - (CGFloat)typingTestRequiredHeight {
-    NSMutableAttributedString * attribObj = (__bridge NSMutableAttributedString *)testString;
-    NSRect r = [attribObj boundingRectWithSize:NSMakeSize(self.frame.size.width - (kTextSidePadding * 2), FLT_MAX)
-                            options:0];
-    return r.size.height + (kTextTopPadding * 2);
+    return CFAttributedStringDrawHeight(testString, self.frame.size.width - (kTextSidePadding * 2),
+                                        (CGContextRef)[[NSGraphicsContext currentContext] graphicsPort]) + kTextTopPadding * 2 + 5;
 }
 
 - (BOOL)canBecomeKeyView {
@@ -176,6 +185,9 @@
         NSUInteger currentLetter = typingTest.currentLetter;
         if (currentLetter >= range.location && currentLetter < range.location + range.length) {
             scrollRect = rect;
+            scrollRect.origin.y -= 6;
+            scrollRect.size.height += 6;
+            if (scrollRect.origin.y < 0) scrollRect.origin.y = 0;
         }
         
         // draw separator line

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		FA4C782D14B8AD7F00FA5CE6 /* ANTypingTestContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = FA4C782C14B8AD7F00FA5CE6 /* ANTypingTestContainer.m */; };
+		FA4C783514B8BC3600FA5CE6 /* CFAttributedStringHeight.m in Sources */ = {isa = PBXBuildFile; fileRef = FA4C783414B8BC3600FA5CE6 /* CFAttributedStringHeight.m */; };
 		FAC4194B14B2317F0035FFAF /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAC4194A14B2317F0035FFAF /* Cocoa.framework */; };
 		FAC4195514B2317F0035FFAF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FAC4195314B2317F0035FFAF /* InfoPlist.strings */; };
 		FAC4195714B2317F0035FFAF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC4195614B2317F0035FFAF /* main.m */; };
@@ -23,6 +24,8 @@
 /* Begin PBXFileReference section */
 		FA4C782B14B8AD7F00FA5CE6 /* ANTypingTestContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANTypingTestContainer.h; sourceTree = "<group>"; };
 		FA4C782C14B8AD7F00FA5CE6 /* ANTypingTestContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANTypingTestContainer.m; sourceTree = "<group>"; };
+		FA4C783414B8BC3600FA5CE6 /* CFAttributedStringHeight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CFAttributedStringHeight.m; sourceTree = "<group>"; };
+		FA4C783614B8BC7400FA5CE6 /* CFAttributedStringHeight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CFAttributedStringHeight.h; sourceTree = "<group>"; };
 		FAC4194614B2317F0035FFAF /* TypingTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TypingTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAC4194A14B2317F0035FFAF /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		FAC4194D14B2317F0035FFAF /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -58,6 +61,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FA4C783214B8BC1E00FA5CE6 /* Graphics */ = {
+			isa = PBXGroup;
+			children = (
+				FAC4196E14B236190035FFAF /* ANTypingTestView.h */,
+				FAC4196F14B236190035FFAF /* ANTypingTestView.m */,
+				FA4C782B14B8AD7F00FA5CE6 /* ANTypingTestContainer.h */,
+				FA4C782C14B8AD7F00FA5CE6 /* ANTypingTestContainer.m */,
+				FA4C783614B8BC7400FA5CE6 /* CFAttributedStringHeight.h */,
+				FA4C783414B8BC3600FA5CE6 /* CFAttributedStringHeight.m */,
+			);
+			name = Graphics;
+			sourceTree = "<group>";
+		};
 		FAC4193B14B2317F0035FFAF = {
 			isa = PBXGroup;
 			children = (
@@ -123,14 +139,11 @@
 		FAC4196D14B236060035FFAF /* ANTypingTest */ = {
 			isa = PBXGroup;
 			children = (
+				FA4C783214B8BC1E00FA5CE6 /* Graphics */,
 				FAC4196714B2321C0035FFAF /* ANTypingTest.h */,
 				FAC4196814B2321C0035FFAF /* ANTypingTest.m */,
 				FAC4196A14B233690035FFAF /* ANTypingTestLetter.h */,
 				FAC4196B14B233690035FFAF /* ANTypingTestLetter.m */,
-				FAC4196E14B236190035FFAF /* ANTypingTestView.h */,
-				FAC4196F14B236190035FFAF /* ANTypingTestView.m */,
-				FA4C782B14B8AD7F00FA5CE6 /* ANTypingTestContainer.h */,
-				FA4C782C14B8AD7F00FA5CE6 /* ANTypingTestContainer.m */,
 			);
 			name = ANTypingTest;
 			sourceTree = "<group>";
@@ -205,6 +218,7 @@
 				FAC4197014B236190035FFAF /* ANTypingTestView.m in Sources */,
 				FAC4197314B24C120035FFAF /* KeyWindow.m in Sources */,
 				FA4C782D14B8AD7F00FA5CE6 /* ANTypingTestContainer.m in Sources */,
+				FA4C783514B8BC3600FA5CE6 /* CFAttributedStringHeight.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

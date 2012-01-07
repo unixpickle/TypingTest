@@ -8,6 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import "ANTypingTest.h"
+#import "CFAttributedStringHeight.h"
 
 #define kTextSidePadding 6
 #define kTextTopPadding 10
