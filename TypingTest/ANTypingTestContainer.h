@@ -17,5 +17,6 @@
 @property (readonly) ANTypingTestView * testView;
 
 - (id)initWithFrame:(NSRect)aRect typingTestView:(ANTypingTestView *)aTestView;
+- (void)redrawStuff;
 
 @end

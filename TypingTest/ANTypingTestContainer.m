@@ -16,6 +16,7 @@
     if ((self = [super initWithFrame:aRect])) {
         [aTestView setDelegate:self];
         [aTestView setFrame:NSMakeRect(0, 0, aRect.size.width, aRect.size.height)];
+        
         CGFloat height = [aTestView typingTestRequiredHeight];
         NSRect newFrame = NSMakeRect(0, 0, aRect.size.width, height);
         [aTestView setFrame:newFrame];
@@ -30,8 +31,14 @@
         
         [self.contentView scrollRectToVisible:NSMakeRect(0, self.frame.size.height - 1, 1, 1)];
         testView = aTestView;
+        
+        [self performSelector:@selector(redrawStuff) withObject:nil afterDelay:0.1];
     }
     return self;
+}
+
+- (void)redrawStuff {
+    [self.contentView setNeedsDisplay:YES];
 }
 
 - (BOOL)canBecomeKeyView {
