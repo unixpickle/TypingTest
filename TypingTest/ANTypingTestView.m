@@ -164,18 +164,16 @@
         ANTextLine * line = [lines objectAtIndex:i];
         CGRect rect = [line boundingRect];
         
-        // if the line contains the current character, scroll to the line,
-        // and also draw a cursor
-        CFRange range = CTLineGetStringRange([line CTLine]);
+        // special things need to be done for the current line
         NSUInteger currentLetter = typingTest.currentLetter;
-        if (currentLetter >= range.location && currentLetter < range.location + range.length) {
+        if ([line containsCharacterIndex:currentLetter]) {
             scrollRect = rect;
             scrollRect.origin.y -= 6;
             scrollRect.size.height += 6;
             if (scrollRect.origin.y < 0) scrollRect.origin.y = 0;
             
-            CGFloat offset = CTLineGetOffsetForStringIndex([line CTLine], currentLetter, NULL);
-            offset += rect.origin.x;
+            // draw the cursor
+            CGFloat offset = [line offsetOfCharacter:currentLetter];
             CGPoint topPoint = CGPointMake(offset, rect.origin.y - 1);
             CGPoint bottomPoint = CGPointMake(offset, rect.origin.y + rect.size.height + 1);
             

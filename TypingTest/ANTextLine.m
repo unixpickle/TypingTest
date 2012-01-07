@@ -33,6 +33,15 @@
     return bounds;
 }
 
+- (CGFloat)offsetOfCharacter:(NSUInteger)charIndex {
+    return CTLineGetOffsetForStringIndex(line, charIndex, NULL) + origin.x;
+}
+
+- (BOOL)containsCharacterIndex:(NSUInteger)charIndex {
+    CFRange range = CTLineGetStringRange(line);
+    return (range.location <= charIndex && range.location + range.length > charIndex);
+}
+
 - (void)dealloc {
     CGContextRelease(context);
     CFRelease(line);

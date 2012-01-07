@@ -20,4 +20,7 @@
 - (CGPoint)origin;
 - (CGRect)boundingRect;
 
+- (CGFloat)offsetOfCharacter:(NSUInteger)charIndex;
+- (BOOL)containsCharacterIndex:(NSUInteger)charIndex;
+
 @end
