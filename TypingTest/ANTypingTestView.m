@@ -120,6 +120,7 @@
 
 - (void)drawRect:(NSRect)dirtyRect {
     CGContextRef context = (CGContextRef)[[NSGraphicsContext currentContext] graphicsPort];
+    CGContextClearRect(context, self.bounds);
     CGRect newScrollRect = [self drawTestText:context];
     if (!CGRectEqualToRect(newScrollRect, currentScrollRect)) {
         currentScrollRect = newScrollRect;
@@ -167,10 +168,7 @@
     CFArrayRef lines = CTFrameGetLines(frame);
     CGPoint * origins = (CGPoint *)malloc(sizeof(CGPoint) * CFArrayGetCount(lines));
     CTFrameGetLineOrigins(frame, CFRangeMake(0, 0), origins);
-    
-    // blue line separator color
-    CGContextSetRGBStrokeColor(context, 0.6, 0.7, 0.99, 1);
-    
+        
     CGRect scrollRect = CGRectZero;
     for (NSUInteger i = 0; i < CFArrayGetCount(lines); i++) {
         // calculate the rect for this line
@@ -180,7 +178,8 @@
         rect.origin.x += boundsRect.origin.x;
         rect.origin.y += boundsRect.origin.y;
         
-        // if the line contains the current character, scroll to the line
+        // if the line contains the current character, scroll to the line,
+        // and also draw a cursor
         CFRange range = CTLineGetStringRange(line);
         NSUInteger currentLetter = typingTest.currentLetter;
         if (currentLetter >= range.location && currentLetter < range.location + range.length) {
@@ -188,10 +187,23 @@
             scrollRect.origin.y -= 6;
             scrollRect.size.height += 6;
             if (scrollRect.origin.y < 0) scrollRect.origin.y = 0;
+            
+            CGFloat offset = CTLineGetOffsetForStringIndex(line, currentLetter, NULL) + rect.origin.x;
+            CGPoint topPoint = CGPointMake(offset, rect.origin.y - 1);
+            CGPoint bottomPoint = CGPointMake(offset, rect.origin.y + rect.size.height + 1);
+            
+            
+            // cursor color
+            CGContextSetRGBStrokeColor(context, 0, 0, 0, 1);
+            CGPoint points[2] = {topPoint, bottomPoint};
+            CGContextStrokeLineSegments(context, points, 2);
         }
         
         // draw separator line
         if (i + 1 < CFArrayGetCount(lines)) {
+            // blue line separator color
+            CGContextSetRGBStrokeColor(context, 0.6, 0.7, 0.99, 1);
+
             CGPoint lineStart = CGPointMake(3, round(CGRectGetMinY(rect)) - 8);
             CGPoint lineEnd = CGPointMake(self.frame.size.width - 6, round(CGRectGetMinY(rect)) - 8);
             CGPoint points[2] = {lineStart, lineEnd};

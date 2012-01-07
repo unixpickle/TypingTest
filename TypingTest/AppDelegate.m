@@ -13,7 +13,7 @@
 @synthesize window = _window;
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-    ANTypingTest * test = [[ANTypingTest alloc] initWithTestString:@"This is a basic typing test. Letters you type incorrectly will appear in red. Soon I must make incorrect letters/characters have a red background so that you can tell if you mess up on spaces."];
+    ANTypingTest * test = [[ANTypingTest alloc] initWithTestString:@"This is a basic typing test. Letters you type incorrectly will appear in red. Letters that you have yet to type will appear in gray. The cursor that comes before every character is drawn manually through CoreGraphics. Enjoy the test, and please, spend some time developing this project so I don't have to."];
     ANTypingTestView * testView = [[ANTypingTestView alloc] initWithFrame:[self.window.contentView bounds]
                                                                typingTest:test];
     NSRect testFrame = NSMakeRect(0, [self.window.contentView frame].size.height - 59,
