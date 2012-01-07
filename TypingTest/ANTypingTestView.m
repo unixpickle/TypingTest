@@ -10,6 +10,8 @@
 
 @implementation ANTypingTestView
 
+@synthesize delegate;
+
 - (id)initWithFrame:(NSRect)aFrame typingTest:(ANTypingTest *)theTest {
     if ((self = [super initWithFrame:aFrame])) {
         typingTest = theTest;
@@ -46,6 +48,13 @@
         CFRetain(pStyle);
     }
     return self;
+}
+
+- (CGFloat)typingTestRequiredHeight {
+    NSMutableAttributedString * attribObj = (__bridge NSMutableAttributedString *)testString;
+    NSRect r = [attribObj boundingRectWithSize:NSMakeSize(self.frame.size.width - (kTextSidePadding * 2), FLT_MAX)
+                            options:0];
+    return r.size.height + (kTextTopPadding * 2);
 }
 
 - (BOOL)canBecomeKeyView {
@@ -102,7 +111,13 @@
 
 - (void)drawRect:(NSRect)dirtyRect {
     CGContextRef context = (CGContextRef)[[NSGraphicsContext currentContext] graphicsPort];
-    [self drawTestText:context];
+    CGRect newScrollRect = [self drawTestText:context];
+    if (!CGRectEqualToRect(newScrollRect, currentScrollRect)) {
+        currentScrollRect = newScrollRect;
+        if ([delegate respondsToSelector:@selector(typingTestView:scrollToRect:)]) {
+            [delegate typingTestView:self scrollToRect:newScrollRect];
+        }
+    }
 }
 
 - (CGRect)drawTestText:(CGContextRef)context {
@@ -111,37 +126,59 @@
     CGContextSetRGBFillColor(context, 1, 1, 1, 1);
     CGContextFillRect(context, self.bounds);
     
-    NSRect boundsRect = NSMakeRect(6, 10, self.frame.size.width - 12, self.frame.size.height - 20);
+    NSRect boundsRect = NSMakeRect(kTextSidePadding, kTextTopPadding,
+                                   self.frame.size.width - (kTextSidePadding * 2),
+                                   self.frame.size.height - (kTextTopPadding * 2));
     CGMutablePathRef path = CGPathCreateMutable();
     CGPathAddRect(path, NULL, boundsRect);
     
     CTFramesetterRef framesetter = CTFramesetterCreateWithAttributedString(testString);
     CTFrameRef frame = CTFramesetterCreateFrame(framesetter, CFRangeMake(0, 0), path, NULL);
     
+    CGPathRelease(path);
+    CFRelease(framesetter);
+    
     // draw the text
     CGContextSetTextPosition(context, 0, 0);
     CTFrameDraw(frame, context);
     
-    // draw blue separators between lines
+    CGRect scrollRect = [self drawTestTextLines:frame context:context];
+    CFRelease(frame);
+    
+    return scrollRect;
+}
+
+- (CGRect)drawTestTextLines:(CTFrameRef)frame context:(CGContextRef)context {
+    // universal drawing bounds
+    NSRect boundsRect = NSMakeRect(kTextSidePadding, kTextTopPadding,
+                                   self.frame.size.width - (kTextSidePadding * 2),
+                                   self.frame.size.height - (kTextTopPadding * 2));
+    
+    // get line info
     CFArrayRef lines = CTFrameGetLines(frame);
     CGPoint * origins = (CGPoint *)malloc(sizeof(CGPoint) * CFArrayGetCount(lines));
     CTFrameGetLineOrigins(frame, CFRangeMake(0, 0), origins);
     
+    // blue line separator color
     CGContextSetRGBStrokeColor(context, 0.6, 0.7, 0.99, 1);
     
-    CGFloat minHeight = CGFLOAT_MAX;
+    CGRect scrollRect = CGRectZero;
     for (NSUInteger i = 0; i < CFArrayGetCount(lines); i++) {
-        // calculate the lowest height that we use for text
+        // calculate the rect for this line
         CTLineRef line = CFArrayGetValueAtIndex(lines, i);
         CGRect rect = CTLineGetImageBounds(line, context);
         rect.origin = origins[i];
         rect.origin.x += boundsRect.origin.x;
         rect.origin.y += boundsRect.origin.y;
-        if (rect.origin.y < minHeight) {
-            minHeight = rect.origin.y;
+        
+        // if the line contains the current character, scroll to the line
+        CFRange range = CTLineGetStringRange(line);
+        NSUInteger currentLetter = typingTest.currentLetter;
+        if (currentLetter >= range.location && currentLetter < range.location + range.length) {
+            scrollRect = rect;
         }
         
-        // draw line
+        // draw separator line
         if (i + 1 < CFArrayGetCount(lines)) {
             CGPoint lineStart = CGPointMake(3, round(CGRectGetMinY(rect)) - 8);
             CGPoint lineEnd = CGPointMake(self.frame.size.width - 6, round(CGRectGetMinY(rect)) - 8);
@@ -151,12 +188,7 @@
     }
     
     free(origins);
-    
-    CGPathRelease(path);
-    CFRelease(framesetter);
-    CFRelease(frame);
-    
-    return CGRectMake(0, minHeight, self.frame.size.width, self.frame.size.height - minHeight);
+    return scrollRect;
 }
 
 #pragma mark - Memory -

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA4C782D14B8AD7F00FA5CE6 /* ANTypingTestContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = FA4C782C14B8AD7F00FA5CE6 /* ANTypingTestContainer.m */; };
 		FAC4194B14B2317F0035FFAF /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAC4194A14B2317F0035FFAF /* Cocoa.framework */; };
 		FAC4195514B2317F0035FFAF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FAC4195314B2317F0035FFAF /* InfoPlist.strings */; };
 		FAC4195714B2317F0035FFAF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC4195614B2317F0035FFAF /* main.m */; };
@@ -20,6 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FA4C782B14B8AD7F00FA5CE6 /* ANTypingTestContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANTypingTestContainer.h; sourceTree = "<group>"; };
+		FA4C782C14B8AD7F00FA5CE6 /* ANTypingTestContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANTypingTestContainer.m; sourceTree = "<group>"; };
 		FAC4194614B2317F0035FFAF /* TypingTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TypingTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAC4194A14B2317F0035FFAF /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		FAC4194D14B2317F0035FFAF /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -126,6 +129,8 @@
 				FAC4196B14B233690035FFAF /* ANTypingTestLetter.m */,
 				FAC4196E14B236190035FFAF /* ANTypingTestView.h */,
 				FAC4196F14B236190035FFAF /* ANTypingTestView.m */,
+				FA4C782B14B8AD7F00FA5CE6 /* ANTypingTestContainer.h */,
+				FA4C782C14B8AD7F00FA5CE6 /* ANTypingTestContainer.m */,
 			);
 			name = ANTypingTest;
 			sourceTree = "<group>";
@@ -199,6 +204,7 @@
 				FAC4196C14B233690035FFAF /* ANTypingTestLetter.m in Sources */,
 				FAC4197014B236190035FFAF /* ANTypingTestView.m in Sources */,
 				FAC4197314B24C120035FFAF /* KeyWindow.m in Sources */,
+				FA4C782D14B8AD7F00FA5CE6 /* ANTypingTestContainer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -320,6 +326,7 @@
 				FAC4196614B2317F0035FFAF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
