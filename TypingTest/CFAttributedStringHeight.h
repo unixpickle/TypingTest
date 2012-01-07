@@ -7,5 +7,6 @@
 //
 
 #import <AppKit/AppKit.h>
+#import "ANTextFrame.h"
 
 CGFloat CFAttributedStringDrawHeight (CFAttributedStringRef string, CGFloat width, CGContextRef context);

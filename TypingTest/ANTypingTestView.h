@@ -9,6 +9,7 @@
 #import <Cocoa/Cocoa.h>
 #import "ANTypingTest.h"
 #import "CFAttributedStringHeight.h"
+#import "ANTextFrame.h"
 
 #define kTextSidePadding 6
 #define kTextTopPadding 10
@@ -43,6 +44,6 @@
 - (void)setLetterState:(ANTypingTestLetterState)state forLetter:(NSUInteger)index;
 
 - (CGRect)drawTestText:(CGContextRef)context;
-- (CGRect)drawTestTextLines:(CTFrameRef)frame context:(CGContextRef)context;
+- (CGRect)drawTestTextLines:(ANTextFrame *)frame context:(CGContextRef)context;
 
 @end

@@ -142,45 +142,31 @@
     CGMutablePathRef path = CGPathCreateMutable();
     CGPathAddRect(path, NULL, boundsRect);
     
-    CTFramesetterRef framesetter = CTFramesetterCreateWithAttributedString(testString);
-    CTFrameRef frame = CTFramesetterCreateFrame(framesetter, CFRangeMake(0, 0), path, NULL);
+    ANTextFrame * frame = [[ANTextFrame alloc] initWithAttributedString:testString
+                                                                context:context path:path];
     
     CGPathRelease(path);
-    CFRelease(framesetter);
     
     // draw the text
     CGContextSetTextPosition(context, 0, 0);
-    CTFrameDraw(frame, context);
+    [frame draw];
     
-    CGRect scrollRect = [self drawTestTextLines:frame context:context];
-    CFRelease(frame);
-    
+    CGRect scrollRect = [self drawTestTextLines:frame context:context];    
     return scrollRect;
 }
 
-- (CGRect)drawTestTextLines:(CTFrameRef)frame context:(CGContextRef)context {
-    // universal drawing bounds
-    NSRect boundsRect = NSMakeRect(kTextSidePadding, kTextTopPadding,
-                                   self.frame.size.width - (kTextSidePadding * 2),
-                                   self.frame.size.height - (kTextTopPadding * 2));
-    
+- (CGRect)drawTestTextLines:(ANTextFrame *)frame context:(CGContextRef)context {    
     // get line info
-    CFArrayRef lines = CTFrameGetLines(frame);
-    CGPoint * origins = (CGPoint *)malloc(sizeof(CGPoint) * CFArrayGetCount(lines));
-    CTFrameGetLineOrigins(frame, CFRangeMake(0, 0), origins);
-        
+    NSArray * lines = [frame lines];
+    
     CGRect scrollRect = CGRectZero;
-    for (NSUInteger i = 0; i < CFArrayGetCount(lines); i++) {
-        // calculate the rect for this line
-        CTLineRef line = CFArrayGetValueAtIndex(lines, i);
-        CGRect rect = CTLineGetImageBounds(line, context);
-        rect.origin = origins[i];
-        rect.origin.x += boundsRect.origin.x;
-        rect.origin.y += boundsRect.origin.y;
+    for (NSUInteger i = 0; i < [lines count]; i++) {
+        ANTextLine * line = [lines objectAtIndex:i];
+        CGRect rect = [line boundingRect];
         
         // if the line contains the current character, scroll to the line,
         // and also draw a cursor
-        CFRange range = CTLineGetStringRange(line);
+        CFRange range = CTLineGetStringRange([line CTLine]);
         NSUInteger currentLetter = typingTest.currentLetter;
         if (currentLetter >= range.location && currentLetter < range.location + range.length) {
             scrollRect = rect;
@@ -188,30 +174,29 @@
             scrollRect.size.height += 6;
             if (scrollRect.origin.y < 0) scrollRect.origin.y = 0;
             
-            CGFloat offset = CTLineGetOffsetForStringIndex(line, currentLetter, NULL) + rect.origin.x;
+            CGFloat offset = CTLineGetOffsetForStringIndex([line CTLine], currentLetter, NULL);
+            offset += rect.origin.x;
             CGPoint topPoint = CGPointMake(offset, rect.origin.y - 1);
             CGPoint bottomPoint = CGPointMake(offset, rect.origin.y + rect.size.height + 1);
             
-            
-            // cursor color
-            CGContextSetRGBStrokeColor(context, 0, 0, 0, 1);
+            // stroke points
             CGPoint points[2] = {topPoint, bottomPoint};
+            CGContextSetRGBStrokeColor(context, 0, 0, 0, 1);
             CGContextStrokeLineSegments(context, points, 2);
         }
         
-        // draw separator line
-        if (i + 1 < CFArrayGetCount(lines)) {
-            // blue line separator color
-            CGContextSetRGBStrokeColor(context, 0.6, 0.7, 0.99, 1);
-
+        // draw line separator
+        if (i + 1 < [lines count]) {
             CGPoint lineStart = CGPointMake(3, round(CGRectGetMinY(rect)) - 8);
             CGPoint lineEnd = CGPointMake(self.frame.size.width - 6, round(CGRectGetMinY(rect)) - 8);
+            
+            // stroke points
             CGPoint points[2] = {lineStart, lineEnd};
+            CGContextSetRGBStrokeColor(context, 0.6, 0.7, 0.99, 1);
             CGContextStrokeLineSegments(context, points, 2);
         }
     }
     
-    free(origins);
     return scrollRect;
 }
 

@@ -21,4 +21,6 @@
 - (CGRect)boundingRect;
 - (NSArray *)lines;
 
+- (void)draw;
+
 @end

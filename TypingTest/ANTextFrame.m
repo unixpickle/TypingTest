@@ -75,6 +75,10 @@
     return [NSArray arrayWithArray:lineArray];
 }
 
+- (void)draw {
+    CTFrameDraw(frame, context);
+}
+
 - (void)dealloc {
     CFRelease(frame);
     CGContextRelease(context);
