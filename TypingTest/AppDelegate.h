@@ -9,10 +9,15 @@
 #import <Cocoa/Cocoa.h>
 #import "ANTypingTestContainer.h"
 
-@interface AppDelegate : NSObject <NSApplicationDelegate> {
+#define kTestViewHeight 59*4
+
+@interface AppDelegate : NSObject <NSApplicationDelegate, ANTypingTestViewDelegate> {
     ANTypingTestContainer * testContainer;
+    NSTimer * timer;
 }
 
 @property (assign) IBOutlet NSWindow * window;
+
+- (void)updateStats;
 
 @end

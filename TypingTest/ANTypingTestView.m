@@ -10,7 +10,9 @@
 
 @implementation ANTypingTestView
 
+@synthesize graphicsDelegate;
 @synthesize delegate;
+@synthesize typingTest;
 
 - (id)initWithFrame:(NSRect)aFrame typingTest:(ANTypingTest *)theTest {
     if ((self = [super initWithFrame:aFrame])) {
@@ -73,6 +75,11 @@
 #pragma mark - Test -
 
 - (void)keyDown:(NSEvent *)theEvent {
+    if ([typingTest isFinishedTest]) return;
+    if (![typingTest currentPeriod]) {
+        [typingTest startPeriod];
+    }
+    
     NSString * chars = [theEvent characters];
     
     // 51 = backspace
@@ -95,6 +102,10 @@
     } else {
         [self setLetterState:ANTypingTestLetterStateCorrect
                    forLetter:(typingTest.currentLetter - 1)];
+    }
+    
+    if ([typingTest isFinishedTest]) {
+        [typingTest endPeriod];
     }
 }
 
@@ -124,8 +135,8 @@
     CGRect newScrollRect = [self drawTestText:context];
     if (!CGRectEqualToRect(newScrollRect, currentScrollRect)) {
         currentScrollRect = newScrollRect;
-        if ([delegate respondsToSelector:@selector(typingTestView:scrollToRect:)]) {
-            [delegate typingTestView:self scrollToRect:newScrollRect];
+        if ([graphicsDelegate respondsToSelector:@selector(typingTestView:scrollToRect:)]) {
+            [graphicsDelegate typingTestView:self scrollToRect:newScrollRect];
         }
     }
 }

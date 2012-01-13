@@ -10,8 +10,7 @@
 
 @implementation ANTypingTest
 
-@synthesize startDate;
-@synthesize endDate;
+@synthesize currentPeriod;
 @synthesize letters;
 @synthesize currentLetter;
 
@@ -24,23 +23,39 @@
             [lettersMutable addObject:letter];
         }
         letters = [[NSArray alloc] initWithArray:lettersMutable];
+        previousPeriods = [[NSMutableArray alloc] init];
     }
     return self;
 }
 
-- (void)beginTest {
-    endDate = nil;
-    startDate = [NSDate date];
+#pragma mark - Timing -
+
+- (void)startPeriod {
+    if (currentPeriod) {
+        [currentPeriod endPeriod];
+        [previousPeriods addObject:currentPeriod];
+    }
+    currentPeriod = [ANTestTimePeriod periodStartingWithNow];
 }
 
-- (void)endTest {
-    endDate = [NSDate date];
+- (void)endPeriod {
+    [currentPeriod endPeriod];
+    [previousPeriods addObject:currentPeriod];
+    currentPeriod = nil;
 }
 
-- (NSTimeInterval)testTime {
-    if (!endDate) return [[NSDate date] timeIntervalSinceDate:startDate];
-    return [endDate timeIntervalSinceDate:startDate];
+- (NSUInteger)totalTime {
+    NSTimeInterval totalTime = 0;
+    for (ANTestTimePeriod * period in previousPeriods) {
+        totalTime += [period periodTime];
+    }
+    if (currentPeriod) {
+        totalTime += [currentPeriod periodTime];
+    }
+    return totalTime;
 }
+
+#pragma mark - Appending & New Text Handling -
 
 - (BOOL)isFinishedTest {
     if (currentLetter == [letters count]) return YES;
@@ -65,6 +80,39 @@
         [letter setState:ANTypingTestLetterStateIncorrect];
         return NO;
     }
+}
+
+#pragma mark - User Statistics -
+
+- (NSUInteger)wordsCompleteCount {
+    NSUInteger wordCount = 0;
+    NSUInteger charCount = 0;
+    for (NSUInteger i = 0; i < [letters count]; i++) {
+        ANTypingTestLetter * letter = [letters objectAtIndex:i];
+        if ([letter state] == ANTypingTestLetterStateDefault) {
+            charCount = 0;
+            break;
+        }
+        if (isspace([letter letter])) {
+            if (charCount > 0) wordCount++;
+            charCount = 0;
+        } else {
+            charCount++;
+        }
+    }
+    if (charCount > 0) wordCount++;
+    return wordCount;
+}
+
+- (NSUInteger)mistakeCount {
+    NSUInteger numWrong = 0;
+    for (NSUInteger i = 0; i < [letters count]; i++) {
+        ANTypingTestLetter * letter = [letters objectAtIndex:i];
+        if ([letter state] == ANTypingTestLetterStateIncorrect) {
+            numWrong++;
+        }
+    }
+    return numWrong;
 }
 
 @end

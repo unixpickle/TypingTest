@@ -14,11 +14,14 @@
 
 - (id)initWithFrame:(NSRect)aRect typingTestView:(ANTypingTestView *)aTestView {
     if ((self = [super initWithFrame:aRect])) {
-        [aTestView setDelegate:self];
+        [aTestView setGraphicsDelegate:self];
         [aTestView setFrame:NSMakeRect(0, 0, aRect.size.width, aRect.size.height)];
         
         CGFloat height = [aTestView typingTestRequiredHeight];
         NSRect newFrame = NSMakeRect(0, 0, aRect.size.width, height);
+        if (newFrame.size.height < self.frame.size.height) {
+            newFrame.size.height = self.frame.size.height;
+        }
         [aTestView setFrame:newFrame];
         
         clipView = [[NSClipView alloc] initWithFrame:newFrame];
@@ -52,7 +55,7 @@
 
 - (void)typingTestView:(ANTypingTestView *)testView scrollToRect:(CGRect)visibleRect {
     NSRect newContent = NSMakeRect(0, visibleRect.origin.y - (self.frame.size.height - visibleRect.size.height), self.frame.size.width, self.frame.size.height);
-    if (newContent.origin.y < 0) newContent.origin.y = 0;
+    
     [self.contentView scrollRectToVisible:newContent];
     [self.documentView setNeedsDisplay:YES];
     [self reflectScrolledClipView:self.documentView];

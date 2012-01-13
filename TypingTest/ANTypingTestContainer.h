@@ -9,7 +9,7 @@
 #import <AppKit/AppKit.h>
 #import "ANTypingTestView.h"
 
-@interface ANTypingTestContainer : NSScrollView <ANTypingTestViewDelegate> {
+@interface ANTypingTestContainer : NSScrollView <ANTypingTestViewUIDelegate> {
     ANTypingTestView * testView;
     NSClipView * clipView;
 }

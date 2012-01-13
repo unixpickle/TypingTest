@@ -8,27 +8,31 @@
 
 #import <Foundation/Foundation.h>
 #import "ANTypingTestLetter.h"
+#import "ANTestTimePeriod.h"
 
 @interface ANTypingTest : NSObject {
-    NSDate * startDate;
-    NSDate * endDate;
+    ANTestTimePeriod * currentPeriod;
+    NSMutableArray * previousPeriods;
     NSArray * letters;
     NSUInteger currentLetter;
 }
 
-@property (readonly) NSDate * startDate;
-@property (readonly) NSDate * endDate;
+@property (readonly) ANTestTimePeriod * currentPeriod;
 @property (readonly) NSArray * letters;
 @property (readwrite) NSUInteger currentLetter;
 
 - (id)initWithTestString:(NSString *)aString;
 
-- (void)beginTest;
-- (void)endTest;
-- (NSTimeInterval)testTime;
+- (void)startPeriod;
+- (void)endPeriod;
+- (NSUInteger)totalTime;
+
 - (BOOL)isFinishedTest;
 
 - (void)deleteLastChar;
 - (BOOL)charTyped:(unichar)theChar;
+
+- (NSUInteger)wordsCompleteCount;
+- (NSUInteger)mistakeCount;
 
 @end

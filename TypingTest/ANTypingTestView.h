@@ -16,10 +16,18 @@
 
 @class ANTypingTestView;
 
-@protocol ANTypingTestViewDelegate <NSObject>
+@protocol ANTypingTestViewUIDelegate <NSObject>
 
 @optional
 - (void)typingTestView:(ANTypingTestView *)testView scrollToRect:(CGRect)visibleRect;
+
+@end
+
+@protocol ANTypingTestViewDelegate <NSObject>
+
+@optional
+- (void)typingTestViewTestBegan:(ANTypingTestView *)testView;
+- (void)typingTestViewTestCompleted:(ANTypingTestView *)testView;
 
 @end
 
@@ -33,10 +41,13 @@
     
     CGRect currentScrollRect;
     
+    __weak id<ANTypingTestViewUIDelegate> graphicsDelegate;
     __weak id<ANTypingTestViewDelegate> delegate;
 }
 
-@property (nonatomic, weak) id<ANTypingTestViewDelegate> delegate;
+@property (nonatomic, weak) id<ANTypingTestViewUIDelegate> graphicsDelegate;
+@property (nonatomic, weak) __weak id<ANTypingTestViewDelegate> delegate;
+@property (readonly) ANTypingTest * typingTest;
 
 - (id)initWithFrame:(NSRect)aFrame typingTest:(ANTypingTest *)theTest;
 - (CGFloat)typingTestRequiredHeight;
