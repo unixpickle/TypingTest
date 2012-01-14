@@ -23,7 +23,6 @@
 }
 
 - (void)windowControllerDidLoadNib:(NSWindowController *)aController {
-    NSLog(@"I am ish gay");
     [super windowControllerDidLoadNib:aController];
     
     if (!loadedTest) {
@@ -43,7 +42,6 @@
 }
 
 - (BOOL)readFromData:(NSData *)data ofType:(NSString *)typeName error:(NSError **)outError {
-    NSLog(@"Read from data");
     ANTypingTest * test = [NSKeyedUnarchiver unarchiveObjectWithData:data];
     if (![test isKindOfClass:[ANTypingTest class]] || !test) {
         if (outError) *outError = [NSError errorWithDomain:NSOSStatusErrorDomain code:0 userInfo:NULL];

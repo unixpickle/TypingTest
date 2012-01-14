@@ -34,6 +34,7 @@
     if ((self = [super init])) {
         letters = [aDecoder decodeObjectForKey:@"letters"];
         previousPeriods = [[aDecoder decodeObjectForKey:@"previousDates"] mutableCopy];
+        currentPeriod = [aDecoder decodeObjectForKey:@"currentPeriod"];
         currentLetter = [aDecoder decodeIntegerForKey:@"currentLetter"];
     }
     return self;
@@ -42,6 +43,7 @@
 - (void)encodeWithCoder:(NSCoder *)aCoder {
     [aCoder encodeObject:previousPeriods forKey:@"previousDates"];
     [aCoder encodeObject:letters forKey:@"letters"];
+    [aCoder encodeObject:currentPeriod forKey:@"currentPeriod"];
     [aCoder encodeInteger:currentLetter forKey:@"currentLetter"];
 }
 

@@ -28,8 +28,8 @@
 }
 
 - (void)encodeWithCoder:(NSCoder *)aCoder {
-    [aCoder encodeObject:startDate forKey:@"start"];
-    [aCoder encodeObject:endDate forKey:@"end"];
+    if (startDate) [aCoder encodeObject:startDate forKey:@"start"];
+    if (endDate) [aCoder encodeObject:endDate forKey:@"end"];
 }
 
 - (NSTimeInterval)periodTime {
@@ -41,6 +41,12 @@
 
 - (void)endPeriod {
     endDate = [NSDate date];
+}
+
+- (id)copyWithZone:(NSZone *)zone {
+    ANTestTimePeriod * period = [[ANTestTimePeriod allocWithZone:zone] init];
+    [period setStartDate:[startDate copyWithZone:zone]];
+    [period setEndDate:[endDate copyWithZone:zone]];
 }
 
 @end
