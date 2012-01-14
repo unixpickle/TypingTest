@@ -46,8 +46,22 @@
     [wpmField setAlignment:NSRightTextAlignment];
     [[self mainWindow].contentView addSubview:wpmField];
     
-    [wpmField setAutoresizingMask:(NSViewMaxXMargin)];
-    [timeField setAutoresizingMask:(NSViewMaxXMargin)];
+    wordCountField = [NSTextField labelTextField];
+    [wordCountField setFrame:NSMakeRect(frame.size.width - 150, 90 - 30, 140, 20)];
+    [wordCountField setStringValue:@"Words: 0"];
+    [wordCountField setAlignment:NSRightTextAlignment];
+    [[self mainWindow].contentView addSubview:wordCountField];
+    
+    mistakesField = [NSTextField labelTextField];
+    [mistakesField setFrame:NSMakeRect(frame.size.width - 150, 60 - 30, 140, 20)];
+    [mistakesField setStringValue:@"Mistakes: 0"];
+    [mistakesField setAlignment:NSRightTextAlignment];
+    [[self mainWindow].contentView addSubview:mistakesField];
+    
+    [wpmField setAutoresizingMask:NSViewMinXMargin];
+    [timeField setAutoresizingMask:NSViewMinXMargin];
+    [wordCountField setAutoresizingMask:NSViewMinXMargin];
+    [mistakesField setAutoresizingMask:NSViewMinXMargin];
     
     if (!loadedTest) {
         ANTypingTest * defaultTest = [[ANTypingTest alloc] initWithTestString:@"The quick brown fox."];
@@ -103,7 +117,8 @@
 #pragma mark Editing
 
 - (void)enterTextWindowEnteredText:(EnterTextWindow *)window {
-    NSString * testText = [window userText];
+    NSCharacterSet * whitespace = [NSCharacterSet whitespaceAndNewlineCharacterSet];
+    NSString * testText = [[window userText] stringByTrimmingCharactersInSet:whitespace];
     ANTypingTest * test = [[ANTypingTest alloc] initWithTestString:testText];
     [self loadTest:test];
 }
@@ -155,16 +170,20 @@
 
 - (void)updateStatistics {
     ANTypingTest * test = testContainer.testView.typingTest;
-    NSTimeInterval totalTime = round([test totalTime]);
+    NSTimeInterval totalTime = [test totalTime];
     NSUInteger wordCount = [test wordsCompleteCount];
-    // NSUInteger mistakeCount = [test mistakeCount];
+    NSUInteger mistakeCount = [test mistakeCount];
     NSString * timeString = [NSString stringWithFormat:@"Time: %d:%02d",
-                             (int)floor(totalTime / 60.0), (int)totalTime % 60];
+                             (int)floor(round(totalTime) / 60.0), (int)round(totalTime) % 60];
     NSString * wpmString = [NSString stringWithFormat:@"WPM: %d",
                             (int)round((float)wordCount / (totalTime / 60.0))];
+    NSString * mistakesString = [NSString stringWithFormat:@"Mistakes: %ld", (long)mistakeCount];
+    NSString * wordsString = [NSString stringWithFormat:@"Words: %ld", (long)wordCount];
     if (totalTime <= 0) wpmString = @"WPM: 0";
     [timeField setStringValue:timeString];
     [wpmField setStringValue:wpmString];
+    [mistakesField setStringValue:mistakesString];
+    [wordCountField setStringValue:wordsString];
 }
 
 @end
