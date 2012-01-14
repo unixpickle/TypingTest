@@ -7,13 +7,22 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import "NSTextField+Label.h"
 #import "ANTypingTestContainer.h"
 #import "EnterTextWindow.h"
 
-@interface TestDocument : NSDocument <EnterTextWindowDelegate> {
+@interface TestDocument : NSDocument <EnterTextWindowDelegate, ANTypingTestViewDelegate> {
     ANTypingTest * loadedTest;
     ANTypingTestContainer * testContainer;
+    
     NSButton * editButton;
+    NSTextField * timeField;
+    NSTextField * wordCountField;
+    NSTextField * mistakesField;
+    NSTextField * wpmField;
+    
+    
+    NSTimer * testUpdateTimer;
 }
 
 @property (readonly) ANTypingTestContainer * testContainer;
@@ -22,5 +31,6 @@
 - (NSWindow *)mainWindow;
 
 - (void)modifyTestText:(id)sender;
+- (void)updateStatistics;
 
 @end

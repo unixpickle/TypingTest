@@ -20,6 +20,7 @@
 		FAC4196C14B233690035FFAF /* ANTypingTestLetter.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC4196B14B233690035FFAF /* ANTypingTestLetter.m */; };
 		FAC4197014B236190035FFAF /* ANTypingTestView.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC4196F14B236190035FFAF /* ANTypingTestView.m */; };
 		FAC4197314B24C120035FFAF /* KeyWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC4197214B24C120035FFAF /* KeyWindow.m */; };
+		FACB500414C1475A00943B57 /* NSTextField+Label.m in Sources */ = {isa = PBXBuildFile; fileRef = FACB500314C1475A00943B57 /* NSTextField+Label.m */; };
 		FACBE31D14B8D1030097F3E5 /* ANTextFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = FACBE31C14B8D1030097F3E5 /* ANTextFrame.m */; };
 		FACBE32014B8D17B0097F3E5 /* ANTextLine.m in Sources */ = {isa = PBXBuildFile; fileRef = FACBE31F14B8D17B0097F3E5 /* ANTextLine.m */; };
 		FACDDC4B14C122CF00245195 /* EnterTextWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = FACDDC4A14C122CF00245195 /* EnterTextWindow.m */; };
@@ -56,6 +57,8 @@
 		FAC4196F14B236190035FFAF /* ANTypingTestView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANTypingTestView.m; sourceTree = "<group>"; };
 		FAC4197114B24C120035FFAF /* KeyWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeyWindow.h; sourceTree = "<group>"; };
 		FAC4197214B24C120035FFAF /* KeyWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeyWindow.m; sourceTree = "<group>"; };
+		FACB500214C1475A00943B57 /* NSTextField+Label.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSTextField+Label.h"; sourceTree = "<group>"; };
+		FACB500314C1475A00943B57 /* NSTextField+Label.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSTextField+Label.m"; sourceTree = "<group>"; };
 		FACBE31B14B8D1030097F3E5 /* ANTextFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANTextFrame.h; sourceTree = "<group>"; };
 		FACBE31C14B8D1030097F3E5 /* ANTextFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANTextFrame.m; sourceTree = "<group>"; };
 		FACBE31E14B8D17B0097F3E5 /* ANTextLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANTextLine.h; sourceTree = "<group>"; };
@@ -170,6 +173,15 @@
 			name = ANTypingTest;
 			sourceTree = "<group>";
 		};
+		FACB500014C1473A00943B57 /* UI Additions */ = {
+			isa = PBXGroup;
+			children = (
+				FACB500214C1475A00943B57 /* NSTextField+Label.h */,
+				FACB500314C1475A00943B57 /* NSTextField+Label.m */,
+			);
+			name = "UI Additions";
+			sourceTree = "<group>";
+		};
 		FACBE31914B8D0F40097F3E5 /* Text */ = {
 			isa = PBXGroup;
 			children = (
@@ -186,6 +198,7 @@
 		FAD3115514C0F283004A4CA8 /* Document */ = {
 			isa = PBXGroup;
 			children = (
+				FACB500014C1473A00943B57 /* UI Additions */,
 				FAD3115714C0F2A0004A4CA8 /* TestDocument.h */,
 				FAD3115814C0F2A0004A4CA8 /* TestDocument.m */,
 				FAD3115914C0F2A0004A4CA8 /* TestDocument.xib */,
@@ -273,6 +286,7 @@
 				2E9196C114BCCC84003344F9 /* ANTestTimePeriod.m in Sources */,
 				FAD3115A14C0F2A0004A4CA8 /* TestDocument.m in Sources */,
 				FACDDC4B14C122CF00245195 /* EnterTextWindow.m in Sources */,
+				FACB500414C1475A00943B57 /* NSTextField+Label.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

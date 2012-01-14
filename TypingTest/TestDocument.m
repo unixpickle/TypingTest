@@ -37,7 +37,12 @@
     [editButton setTitle:@"Edit"];
     [editButton setTarget:self];
     [editButton setAction:@selector(modifyTestText:)];
-    [[[self mainWindow] contentView] addSubview:editButton];
+    [[self mainWindow].contentView addSubview:editButton];
+    
+    timeField = [NSTextField labelTextField];
+    [timeField setFrame:NSMakeRect(15, 15, 100, 20)];
+    [timeField setStringValue:@"Time: 0:00"];
+    [[self mainWindow].contentView addSubview:timeField];
 }
 
 - (NSData *)dataOfType:(NSString *)typeName error:(NSError **)outError {
@@ -91,7 +96,7 @@
     [self loadTest:test];
 }
 
-#pragma mark - Test Container -
+#pragma mark - Test -
 
 - (void)loadTest:(ANTypingTest *)theTest {
     if (testContainer) {
@@ -107,6 +112,38 @@
     [testContainer setAutoresizingMask:(NSViewWidthSizable | NSViewHeightSizable)];
     [window.contentView addSubview:testContainer];
     [window makeFirstResponder:testContainer];
+    
+    [testView setDelegate:self];
+}
+
+#pragma mark Text Delegate
+
+- (void)typingTestViewTestBegan:(ANTypingTestView *)testView {
+    if (testView != testContainer.testView) return;
+    if (!testUpdateTimer) {
+        testUpdateTimer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(updateStatistics) userInfo:nil repeats:YES];
+    }
+}
+
+- (void)typingTestViewTestCompleted:(ANTypingTestView *)testView {
+    [testUpdateTimer invalidate];
+    testUpdateTimer = nil;
+}
+
+- (void)typingTestViewUpdated:(ANTypingTestView *)testView {
+    [self updateStatistics];
+}
+
+#pragma mark Statistics
+
+- (void)updateStatistics {
+    ANTypingTest * test = testContainer.testView.typingTest;
+    NSTimeInterval totalTime = round([test totalTime]);
+    NSUInteger wordCount = [test wordsCompleteCount];
+    NSUInteger mistakeCount = [test mistakeCount];
+    NSString * timeString = [NSString stringWithFormat:@"Time: %d:%02d",
+                             (int)floor(totalTime / 60.0), (int)totalTime % 60];
+    [timeField setStringValue:timeString];
 }
 
 @end

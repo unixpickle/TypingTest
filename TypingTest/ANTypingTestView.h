@@ -29,6 +29,7 @@
 @optional
 - (void)typingTestViewTestBegan:(ANTypingTestView *)testView;
 - (void)typingTestViewTestCompleted:(ANTypingTestView *)testView;
+- (void)typingTestViewUpdated:(ANTypingTestView *)testView;
 
 @end
 

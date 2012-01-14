@@ -87,6 +87,9 @@
     if ([typingTest isFinishedTest]) return;
     if (![typingTest currentPeriod]) {
         [typingTest startPeriod];
+        if ([delegate respondsToSelector:@selector(typingTestViewTestBegan:)]) {
+            [delegate typingTestViewTestBegan:self];
+        }
     }
     
     NSString * chars = [theEvent characters];
@@ -115,6 +118,9 @@
     
     if ([typingTest isFinishedTest]) {
         [typingTest endPeriod];
+        if ([delegate respondsToSelector:@selector(typingTestViewTestCompleted:)]) {
+            [delegate typingTestViewTestCompleted:self];
+        }
     }
 }
 
