@@ -9,12 +9,12 @@
 #import <Foundation/Foundation.h>
 
 typedef enum {
-    ANTypingTestLetterStateDefault,
-    ANTypingTestLetterStateCorrect,
-    ANTypingTestLetterStateIncorrect
+    ANTypingTestLetterStateDefault = 0,
+    ANTypingTestLetterStateCorrect = 1,
+    ANTypingTestLetterStateIncorrect = 2
 } ANTypingTestLetterState;
 
-@interface ANTypingTestLetter : NSObject {
+@interface ANTypingTestLetter : NSObject <NSCoding> {
     unichar letter;
     ANTypingTestLetterState state;
 }

@@ -13,6 +13,7 @@
 @synthesize graphicsDelegate;
 @synthesize delegate;
 @synthesize typingTest;
+@synthesize currentScrollRect;
 
 - (id)initWithFrame:(NSRect)aFrame typingTest:(ANTypingTest *)theTest {
     if ((self = [super initWithFrame:aFrame])) {
@@ -59,12 +60,20 @@
         CTParagraphStyleRef pStyle = CTParagraphStyleCreate(settings, 2);
         CFAttributedStringSetAttribute(testString, CFRangeMake(0, [typingTest.letters count]), kCTParagraphStyleAttributeName, pStyle);
         CFRetain(pStyle);
+        
+        // initial character states
+        for (NSUInteger i = 0; i < [[theTest letters] count]; i++) {
+            ANTypingTestLetter * letter = [[theTest letters] objectAtIndex:i];
+            if ([letter state] != ANTypingTestLetterStateDefault) {
+                [self setLetterState:[letter state] forLetter:i];
+            }
+        }
     }
     return self;
 }
 
-- (CGFloat)typingTestRequiredHeight {
-    return CFAttributedStringDrawHeight(testString, self.frame.size.width - (kTextSidePadding * 2),
+- (CGFloat)typingTestRequiredHeight:(CGFloat)width {
+    return CFAttributedStringDrawHeight(testString, width - (kTextSidePadding * 2),
                                         (CGContextRef)[[NSGraphicsContext currentContext] graphicsPort]) + kTextTopPadding * 2 + 5;
 }
 
@@ -178,6 +187,7 @@
         // special things need to be done for the current line
         NSUInteger currentLetter = typingTest.currentLetter;
         if ([line containsCharacterIndex:currentLetter]) {
+            // get the frame of the current line
             scrollRect = rect;
             scrollRect.origin.y -= 6;
             scrollRect.size.height += 6;

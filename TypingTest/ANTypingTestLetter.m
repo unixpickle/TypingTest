@@ -20,6 +20,19 @@
     return self;
 }
 
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    if ((self = [super init])) {
+        letter = [aDecoder decodeIntegerForKey:@"letter"];
+        state = (ANTypingTestLetterState)[aDecoder decodeIntegerForKey:@"state"];
+    }
+    return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)aCoder {
+    [aCoder encodeInteger:letter forKey:@"letter"];
+    [aCoder encodeInteger:state forKey:@"state"];
+}
+
 + (ANTypingTestLetter *)letterWithUnichar:(unichar)aLetter {
     return [[ANTypingTestLetter alloc] initWithLetter:aLetter state:ANTypingTestLetterStateDefault];
 }

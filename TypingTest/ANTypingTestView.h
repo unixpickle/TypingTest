@@ -48,9 +48,10 @@
 @property (nonatomic, weak) id<ANTypingTestViewUIDelegate> graphicsDelegate;
 @property (nonatomic, weak) __weak id<ANTypingTestViewDelegate> delegate;
 @property (readonly) ANTypingTest * typingTest;
+@property (readonly) CGRect currentScrollRect;
 
 - (id)initWithFrame:(NSRect)aFrame typingTest:(ANTypingTest *)theTest;
-- (CGFloat)typingTestRequiredHeight;
+- (CGFloat)typingTestRequiredHeight:(CGFloat)width;
 
 - (void)setLetterState:(ANTypingTestLetterState)state forLetter:(NSUInteger)index;
 

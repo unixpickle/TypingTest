@@ -10,7 +10,7 @@
 #import "ANTypingTestLetter.h"
 #import "ANTestTimePeriod.h"
 
-@interface ANTypingTest : NSObject {
+@interface ANTypingTest : NSObject <NSCoding> {
     ANTestTimePeriod * currentPeriod;
     NSMutableArray * previousPeriods;
     NSArray * letters;

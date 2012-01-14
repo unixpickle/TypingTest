@@ -19,6 +19,19 @@
     return period;
 }
 
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    if ((self = [super init])) {
+        startDate = [aDecoder decodeObjectForKey:@"start"];
+        endDate = [aDecoder decodeObjectForKey:@"end"];
+    }
+    return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)aCoder {
+    [aCoder encodeObject:startDate forKey:@"start"];
+    [aCoder encodeObject:endDate forKey:@"end"];
+}
+
 - (NSTimeInterval)periodTime {
     if (endDate) {
         return [endDate timeIntervalSinceDate:startDate];

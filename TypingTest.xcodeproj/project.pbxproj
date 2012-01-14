@@ -22,6 +22,9 @@
 		FAC4197314B24C120035FFAF /* KeyWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC4197214B24C120035FFAF /* KeyWindow.m */; };
 		FACBE31D14B8D1030097F3E5 /* ANTextFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = FACBE31C14B8D1030097F3E5 /* ANTextFrame.m */; };
 		FACBE32014B8D17B0097F3E5 /* ANTextLine.m in Sources */ = {isa = PBXBuildFile; fileRef = FACBE31F14B8D17B0097F3E5 /* ANTextLine.m */; };
+		FAD3115A14C0F2A0004A4CA8 /* TestDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD3115814C0F2A0004A4CA8 /* TestDocument.m */; };
+		FAD3115B14C0F2A0004A4CA8 /* TestDocument.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAD3115914C0F2A0004A4CA8 /* TestDocument.xib */; };
+		FAD3115D14C0FC29004A4CA8 /* docicon.icns in Resources */ = {isa = PBXBuildFile; fileRef = FAD3115C14C0FC29004A4CA8 /* docicon.icns */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +59,10 @@
 		FACBE31C14B8D1030097F3E5 /* ANTextFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANTextFrame.m; sourceTree = "<group>"; };
 		FACBE31E14B8D17B0097F3E5 /* ANTextLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANTextLine.h; sourceTree = "<group>"; };
 		FACBE31F14B8D17B0097F3E5 /* ANTextLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANTextLine.m; sourceTree = "<group>"; };
+		FAD3115714C0F2A0004A4CA8 /* TestDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestDocument.h; sourceTree = "<group>"; };
+		FAD3115814C0F2A0004A4CA8 /* TestDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestDocument.m; sourceTree = "<group>"; };
+		FAD3115914C0F2A0004A4CA8 /* TestDocument.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestDocument.xib; sourceTree = "<group>"; };
+		FAD3115C14C0FC29004A4CA8 /* docicon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = docicon.icns; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,8 +84,6 @@
 				FAC4196F14B236190035FFAF /* ANTypingTestView.m */,
 				FA4C782B14B8AD7F00FA5CE6 /* ANTypingTestContainer.h */,
 				FA4C782C14B8AD7F00FA5CE6 /* ANTypingTestContainer.m */,
-				FA4C783614B8BC7400FA5CE6 /* CFAttributedStringHeight.h */,
-				FA4C783414B8BC3600FA5CE6 /* CFAttributedStringHeight.m */,
 			);
 			name = Graphics;
 			sourceTree = "<group>";
@@ -122,6 +127,7 @@
 		FAC4195014B2317F0035FFAF /* TypingTest */ = {
 			isa = PBXGroup;
 			children = (
+				FAD3115514C0F283004A4CA8 /* Document */,
 				FAC4196D14B236060035FFAF /* ANTypingTest */,
 				FAC4195C14B2317F0035FFAF /* AppDelegate.h */,
 				FAC4195D14B2317F0035FFAF /* AppDelegate.m */,
@@ -136,6 +142,7 @@
 		FAC4195114B2317F0035FFAF /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FAD3115C14C0FC29004A4CA8 /* docicon.icns */,
 				FAC4195214B2317F0035FFAF /* TypingTest-Info.plist */,
 				FAC4195314B2317F0035FFAF /* InfoPlist.strings */,
 				FAC4195614B2317F0035FFAF /* main.m */,
@@ -167,8 +174,20 @@
 				FACBE31C14B8D1030097F3E5 /* ANTextFrame.m */,
 				FACBE31E14B8D17B0097F3E5 /* ANTextLine.h */,
 				FACBE31F14B8D17B0097F3E5 /* ANTextLine.m */,
+				FA4C783614B8BC7400FA5CE6 /* CFAttributedStringHeight.h */,
+				FA4C783414B8BC3600FA5CE6 /* CFAttributedStringHeight.m */,
 			);
 			name = Text;
+			sourceTree = "<group>";
+		};
+		FAD3115514C0F283004A4CA8 /* Document */ = {
+			isa = PBXGroup;
+			children = (
+				FAD3115714C0F2A0004A4CA8 /* TestDocument.h */,
+				FAD3115814C0F2A0004A4CA8 /* TestDocument.m */,
+				FAD3115914C0F2A0004A4CA8 /* TestDocument.xib */,
+			);
+			name = Document;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -224,6 +243,8 @@
 				FAC4195514B2317F0035FFAF /* InfoPlist.strings in Resources */,
 				FAC4195B14B2317F0035FFAF /* Credits.rtf in Resources */,
 				FAC4196114B2317F0035FFAF /* MainMenu.xib in Resources */,
+				FAD3115B14C0F2A0004A4CA8 /* TestDocument.xib in Resources */,
+				FAD3115D14C0FC29004A4CA8 /* docicon.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -245,6 +266,7 @@
 				FACBE31D14B8D1030097F3E5 /* ANTextFrame.m in Sources */,
 				FACBE32014B8D17B0097F3E5 /* ANTextLine.m in Sources */,
 				2E9196C114BCCC84003344F9 /* ANTestTimePeriod.m in Sources */,
+				FAD3115A14C0F2A0004A4CA8 /* TestDocument.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

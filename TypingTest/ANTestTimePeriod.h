@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface ANTestTimePeriod : NSObject {
+@interface ANTestTimePeriod : NSObject <NSCoding> {
     NSDate * startDate;
     NSDate * endDate;
 }

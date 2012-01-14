@@ -28,6 +28,23 @@
     return self;
 }
 
+#pragma mark - NSCoding -
+
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    if ((self = [super init])) {
+        letters = [aDecoder decodeObjectForKey:@"letters"];
+        previousPeriods = [[aDecoder decodeObjectForKey:@"previousDates"] mutableCopy];
+        currentLetter = [aDecoder decodeIntegerForKey:@"currentLetter"];
+    }
+    return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)aCoder {
+    [aCoder encodeObject:previousPeriods forKey:@"previousDates"];
+    [aCoder encodeObject:letters forKey:@"letters"];
+    [aCoder encodeInteger:currentLetter forKey:@"currentLetter"];
+}
+
 #pragma mark - Timing -
 
 - (void)startPeriod {

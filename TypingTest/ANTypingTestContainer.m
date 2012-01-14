@@ -17,7 +17,7 @@
         [aTestView setGraphicsDelegate:self];
         [aTestView setFrame:NSMakeRect(0, 0, aRect.size.width, aRect.size.height)];
         
-        CGFloat height = [aTestView typingTestRequiredHeight];
+        CGFloat height = [aTestView typingTestRequiredHeight:aRect.size.width];
         NSRect newFrame = NSMakeRect(0, 0, aRect.size.width, height);
         if (newFrame.size.height < self.frame.size.height) {
             newFrame.size.height = self.frame.size.height;
@@ -42,6 +42,18 @@
 
 - (void)redrawStuff {
     [self.contentView setNeedsDisplay:YES];
+}
+
+- (void)setFrame:(NSRect)frameRect {
+    [super setFrame:frameRect];
+    
+    // calculate the new height for the new width
+    CGFloat height = [testView typingTestRequiredHeight:frameRect.size.width];
+    NSRect newFrame = NSMakeRect(0, 0, frameRect.size.width, height);
+    if (newFrame.size.height < frameRect.size.height) {
+        newFrame.size.height = frameRect.size.height;
+    }
+    [testView setFrame:newFrame];
 }
 
 - (BOOL)canBecomeKeyView {
