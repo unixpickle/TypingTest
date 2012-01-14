@@ -73,6 +73,7 @@
 }
 
 - (CGFloat)typingTestRequiredHeight:(CGFloat)width {
+    NSLog(@"Width: %f", width);
     return CFAttributedStringDrawHeight(testString, width - (kTextSidePadding * 2),
                                         (CGContextRef)[[NSGraphicsContext currentContext] graphicsPort]) + kTextTopPadding * 2 + 5;
 }
@@ -152,6 +153,8 @@
 #pragma mark - Drawing -
 
 - (void)drawRect:(NSRect)dirtyRect {
+    NSLog(@"View Height: %f", self.frame.size.height);
+    NSLog(@"View Width: %f", self.frame.size.width);
     CGContextRef context = (CGContextRef)[[NSGraphicsContext currentContext] graphicsPort];
     CGContextClearRect(context, self.bounds);
     CGRect newScrollRect = [self drawTestText:context];
@@ -171,7 +174,7 @@
     
     NSRect boundsRect = NSMakeRect(kTextSidePadding, kTextTopPadding,
                                    self.frame.size.width - (kTextSidePadding * 2),
-                                   self.frame.size.height - (kTextTopPadding * 2));
+                                   self.frame.size.height - (kTextTopPadding * 2) + 4);
     CGMutablePathRef path = CGPathCreateMutable();
     CGPathAddRect(path, NULL, boundsRect);
     
@@ -183,6 +186,8 @@
     // draw the text
     CGContextSetTextPosition(context, 0, 0);
     [frame draw];
+    
+    NSLog(@"Frame hight: %f", frame.boundingRect.size.height);
     
     CGRect scrollRect = [self drawTestTextLines:frame context:context];    
     return scrollRect;
