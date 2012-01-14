@@ -114,16 +114,16 @@
         theChar = [chars characterAtIndex:0];
     }
     
-    NSUInteger currentChar = typingTest.currentLetter;
+    NSUInteger startChar = typingTest.currentLetter;
     [typingTest charTyped:theChar];
     
-    for (NSUInteger i = currentChar; i < typingTest.currentLetter; i++) {
+    for (NSUInteger i = startChar; i < typingTest.currentLetter; i++) {
         ANTypingTestLetter * aLetter = [[typingTest letters] objectAtIndex:i];
         [self setLetterState:aLetter.state
                    forLetter:i];
     }
     
-    if ([typingTest isFinishedTest]) {
+    if ([typingTest isFinishedTest] && typingTest.currentPeriod) {
         [typingTest endPeriod];
         if ([delegate respondsToSelector:@selector(typingTestViewTestCompleted:)]) {
             [delegate typingTestViewTestCompleted:self];
@@ -172,6 +172,7 @@
     NSRect boundsRect = NSMakeRect(kTextSidePadding, kTextTopPadding,
                                    self.frame.size.width - (kTextSidePadding * 2),
                                    self.frame.size.height - (kTextTopPadding * 2) + 4);
+    
     CGMutablePathRef path = CGPathCreateMutable();
     CGPathAddRect(path, NULL, boundsRect);
     

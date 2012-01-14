@@ -117,14 +117,15 @@
     } else {
         [letter setState:ANTypingTestLetterStateIncorrect];
         if (kSpaceJumpsWords && isspace(theChar)) {
-            // jump until it reaches the space.
+            // jump to the next word/line (or to where the whitespace next occurs)
             for (NSUInteger i = currentLetter; i < [letters count]; i++) {
                 ANTypingTestLetter * aLetter = [letters objectAtIndex:i];
-                if ([[letters objectAtIndex:i] letter] == theChar) {
+                if ([aLetter letter] == theChar) {
                     [aLetter setState:ANTypingTestLetterStateCorrect];
                     currentLetter = i + 1;
                     break;
                 } else {
+                    // they skipped this letter, so it's wrong
                     [aLetter setState:ANTypingTestLetterStateIncorrect];
                 }
             }
