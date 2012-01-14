@@ -25,6 +25,8 @@
 - (void)windowControllerDidLoadNib:(NSWindowController *)aController {
     [super windowControllerDidLoadNib:aController];
     
+    NSRect frame = [[self mainWindow].contentView frame];
+    
     editButton = [[NSButton alloc] initWithFrame:NSMakeRect(10, 120, 80, 24)];
     [editButton setBezelStyle:NSRoundedBezelStyle];
     [editButton setTitle:@"Edit"];
@@ -33,14 +35,19 @@
     [[self mainWindow].contentView addSubview:editButton];
     
     timeField = [NSTextField labelTextField];
-    [timeField setFrame:NSMakeRect(15, 15, 100, 20)];
+    [timeField setFrame:NSMakeRect(frame.size.width - 150, 150 - 30, 140, 20)];
     [timeField setStringValue:@"Time: 0:00"];
+    [timeField setAlignment:NSRightTextAlignment];
     [[self mainWindow].contentView addSubview:timeField];
     
     wpmField = [NSTextField labelTextField];
-    [wpmField setFrame:NSMakeRect(15, 45, 100, 20)];
+    [wpmField setFrame:NSMakeRect(frame.size.width - 150, 120 - 30, 140, 20)];
     [wpmField setStringValue:@"WPM: 0"];
+    [wpmField setAlignment:NSRightTextAlignment];
     [[self mainWindow].contentView addSubview:wpmField];
+    
+    [wpmField setAutoresizingMask:(NSViewMaxXMargin)];
+    [timeField setAutoresizingMask:(NSViewMaxXMargin)];
     
     if (!loadedTest) {
         ANTypingTest * defaultTest = [[ANTypingTest alloc] initWithTestString:@"The quick brown fox."];
@@ -120,6 +127,9 @@
     
     [testView setDelegate:self];
     [self updateStatistics];
+    if ([theTest currentPeriod]) {
+        [self typingTestViewTestBegan:testView];
+    }
 }
 
 #pragma mark Text Delegate
