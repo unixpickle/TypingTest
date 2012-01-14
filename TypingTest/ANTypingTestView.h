@@ -13,6 +13,7 @@
 
 #define kTextSidePadding 6
 #define kTextTopPadding 10
+#define kCursorHeight 14
 
 @class ANTypingTestView;
 

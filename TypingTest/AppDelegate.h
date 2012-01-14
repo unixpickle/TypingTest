@@ -11,13 +11,8 @@
 
 #define kTestViewHeight 59*4
 
-@interface AppDelegate : NSObject <NSApplicationDelegate, ANTypingTestViewDelegate> {
-    ANTypingTestContainer * testContainer;
-    NSTimer * timer;
+@interface AppDelegate : NSObject <NSApplicationDelegate> {
+    BOOL hasOpenedNew;
 }
-
-@property (assign) IBOutlet NSWindow * window;
-
-- (void)updateStats;
 
 @end

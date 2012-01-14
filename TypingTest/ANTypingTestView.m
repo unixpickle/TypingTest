@@ -183,7 +183,7 @@
     for (NSUInteger i = 0; i < [lines count]; i++) {
         ANTextLine * line = [lines objectAtIndex:i];
         CGRect rect = [line boundingRect];
-        
+                
         // special things need to be done for the current line
         NSUInteger currentLetter = typingTest.currentLetter;
         if ([line containsCharacterIndex:currentLetter]) {
@@ -196,7 +196,7 @@
             // draw the cursor
             CGFloat offset = [line offsetOfCharacter:currentLetter];
             CGPoint topPoint = CGPointMake(offset, rect.origin.y - 1);
-            CGPoint bottomPoint = CGPointMake(offset, rect.origin.y + rect.size.height + 1);
+            CGPoint bottomPoint = CGPointMake(offset, rect.origin.y + kCursorHeight + 1);
             
             // stroke points
             CGPoint points[2] = {topPoint, bottomPoint};
@@ -205,7 +205,7 @@
         }
         
         // draw line separator
-        if (i + 1 < [lines count]) {
+        if (i + 1 < [lines count] && [line boundingRect].size.height > 0) {
             CGPoint lineStart = CGPointMake(3, round(CGRectGetMinY(rect)) - 8);
             CGPoint lineEnd = CGPointMake(self.frame.size.width - 6, round(CGRectGetMinY(rect)) - 8);
             

@@ -10,7 +10,7 @@
 #import "ANTypingTestContainer.h"
 #import "EnterTextWindow.h"
 
-@interface TestDocument : NSDocument {
+@interface TestDocument : NSDocument <EnterTextWindowDelegate> {
     ANTypingTest * loadedTest;
     ANTypingTestContainer * testContainer;
     NSButton * editButton;

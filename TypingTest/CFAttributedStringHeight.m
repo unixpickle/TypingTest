@@ -19,5 +19,5 @@ CGFloat CFAttributedStringDrawHeight (CFAttributedStringRef string, CGFloat widt
     
     CGPathRelease(path);
     
-    return [frame boundingRect].size.height;
+    return [frame boundingRect].size.height + 2;
 }

@@ -28,6 +28,15 @@
     return self;
 }
 
+- (NSString *)testString {
+    NSMutableString * stringMutable = [[NSMutableString alloc] init];
+    for (NSUInteger i = 0; i < [letters count]; i++) {
+        unichar c = [[letters objectAtIndex:i] letter];
+        [stringMutable appendFormat:@"%C", c];
+    }
+    return [NSString stringWithString:stringMutable];
+}
+
 #pragma mark - NSCoding -
 
 - (id)initWithCoder:(NSCoder *)aDecoder {

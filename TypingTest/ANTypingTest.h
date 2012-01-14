@@ -22,6 +22,7 @@
 @property (readwrite) NSUInteger currentLetter;
 
 - (id)initWithTestString:(NSString *)aString;
+- (NSString *)testString;
 
 - (void)startPeriod;
 - (void)endPeriod;

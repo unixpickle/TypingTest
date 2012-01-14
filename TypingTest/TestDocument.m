@@ -71,11 +71,24 @@
 #pragma mark UI Actions
 
 - (void)modifyTestText:(id)sender {
-    EnterTextWindow * window = [[EnterTextWindow alloc] initWithSize:NSMakeSize(300, 120) initialText:@""];
+    NSString * current = [testContainer.testView.typingTest testString];
+    EnterTextWindow * window = [[EnterTextWindow alloc] initWithSize:NSMakeSize(300, 120)
+                                                         initialText:current];
+    [window setDelegate:self];
+    
     [NSApp beginSheet:window modalForWindow:[self mainWindow] modalDelegate:self didEndSelector:nil contextInfo:NULL];
     [NSApp runModalForWindow:window];
     [NSApp endSheet:window];
+    
     [window orderOut:nil];
+}
+
+#pragma mark Editing
+
+- (void)enterTextWindowEnteredText:(EnterTextWindow *)window {
+    NSString * testText = [window userText];
+    ANTypingTest * test = [[ANTypingTest alloc] initWithTestString:testText];
+    [self loadTest:test];
 }
 
 #pragma mark - Test Container -
