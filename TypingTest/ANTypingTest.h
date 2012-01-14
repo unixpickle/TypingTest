@@ -29,6 +29,7 @@
 - (NSUInteger)totalTime;
 
 - (BOOL)isFinishedTest;
+- (void)resetTest;
 
 - (void)deleteLastChar;
 - (BOOL)charTyped:(unichar)theChar;

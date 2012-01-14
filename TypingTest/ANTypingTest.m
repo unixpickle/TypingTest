@@ -90,6 +90,16 @@
     return NO;
 }
 
+- (void)resetTest {
+    for (NSUInteger i = 0; i < [letters count]; i++) {
+        ANTypingTestLetter * letter = [letters objectAtIndex:i];
+        [letter setState:ANTypingTestLetterStateDefault];
+    }
+    [self setCurrentLetter:0];
+    currentPeriod = nil;
+    [previousPeriods removeAllObjects];
+}
+
 - (void)deleteLastChar {
     if (currentLetter > 0) {
         currentLetter--;

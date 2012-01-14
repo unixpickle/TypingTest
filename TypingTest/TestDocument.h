@@ -16,6 +16,7 @@
     ANTypingTestContainer * testContainer;
     
     NSButton * editButton;
+    NSButton * pauseResetButton;
     NSTextField * timeField;
     NSTextField * wordCountField;
     NSTextField * mistakesField;
@@ -31,6 +32,7 @@
 - (NSWindow *)mainWindow;
 
 - (void)modifyTestText:(id)sender;
+- (void)pauseRestartPressed:(id)sender;
 - (void)updateStatistics;
 
 @end

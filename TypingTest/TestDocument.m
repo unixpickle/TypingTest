@@ -27,12 +27,19 @@
     
     NSRect frame = [[self mainWindow].contentView frame];
     
-    editButton = [[NSButton alloc] initWithFrame:NSMakeRect(10, 120, 80, 24)];
+    editButton = [[NSButton alloc] initWithFrame:NSMakeRect(10, 110, 90, 24)];
     [editButton setBezelStyle:NSRoundedBezelStyle];
     [editButton setTitle:@"Edit"];
     [editButton setTarget:self];
     [editButton setAction:@selector(modifyTestText:)];
     [[self mainWindow].contentView addSubview:editButton];
+    
+    pauseResetButton = [[NSButton alloc] initWithFrame:NSMakeRect(10, 81, 90, 24)];
+    [pauseResetButton setBezelStyle:NSRoundedBezelStyle];
+    [pauseResetButton setTitle:@"Reset"];
+    [pauseResetButton setTarget:self];
+    [pauseResetButton setAction:@selector(pauseRestartPressed:)];
+    [[self mainWindow].contentView addSubview:pauseResetButton];
     
     timeField = [NSTextField labelTextField];
     [timeField setFrame:NSMakeRect(frame.size.width - 150, 150 - 30, 140, 20)];
@@ -114,6 +121,25 @@
     [window orderOut:nil];
 }
 
+- (void)pauseRestartPressed:(id)sender {
+    [pauseResetButton setTitle:@"Reset"];
+    if (testUpdateTimer) {
+        [pauseResetButton setTitle:@"Reset"];
+        [testContainer.testView.typingTest endPeriod];
+        [testUpdateTimer invalidate];
+        testUpdateTimer = nil;
+        [self updateStatistics];
+    } else {
+        ANTypingTest * test = testContainer.testView.typingTest;
+        [test resetTest];
+        for (NSUInteger i = 0; i < [[test letters] count]; i++) {
+            [testContainer.testView setLetterState:ANTypingTestLetterStateDefault forLetter:i];
+        }
+        [testContainer.testView setNeedsDisplay:YES];
+        [self updateStatistics];
+    }
+}
+
 #pragma mark Editing
 
 - (void)enterTextWindowEnteredText:(EnterTextWindow *)window {
@@ -150,6 +176,7 @@
 #pragma mark Text Delegate
 
 - (void)typingTestViewTestBegan:(ANTypingTestView *)testView {
+    [pauseResetButton setTitle:@"Pause"];
     if (testView != testContainer.testView) return;
     if (!testUpdateTimer) {
         testUpdateTimer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(updateStatistics) userInfo:nil repeats:YES];
@@ -157,6 +184,7 @@
 }
 
 - (void)typingTestViewTestCompleted:(ANTypingTestView *)testView {
+    [pauseResetButton setTitle:@"Reset"];
     [self updateStatistics];
     [testUpdateTimer invalidate];
     testUpdateTimer = nil;
