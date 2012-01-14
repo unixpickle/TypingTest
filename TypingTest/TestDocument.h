@@ -22,7 +22,6 @@
     NSTextField * mistakesField;
     NSTextField * wpmField;
     
-    
     NSTimer * testUpdateTimer;
 }
 

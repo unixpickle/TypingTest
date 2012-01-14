@@ -106,14 +106,21 @@
         return;
     }
     
-    if ([chars length] != 1) return;
-    unichar theChar = [chars characterAtIndex:0];
-    if (![typingTest charTyped:theChar]) {
-        [self setLetterState:ANTypingTestLetterStateIncorrect
-                   forLetter:(typingTest.currentLetter - 1)];
+    unichar theChar = 0;
+    if ([theEvent keyCode] == 36) {
+        theChar = '\n';
     } else {
-        [self setLetterState:ANTypingTestLetterStateCorrect
-                   forLetter:(typingTest.currentLetter - 1)];
+        if ([chars length] != 1) return;
+        theChar = [chars characterAtIndex:0];
+    }
+    
+    NSUInteger currentChar = typingTest.currentLetter;
+    [typingTest charTyped:theChar];
+    
+    for (NSUInteger i = currentChar; i < typingTest.currentLetter; i++) {
+        ANTypingTestLetter * aLetter = [[typingTest letters] objectAtIndex:i];
+        [self setLetterState:aLetter.state
+                   forLetter:i];
     }
     
     if ([typingTest isFinishedTest]) {

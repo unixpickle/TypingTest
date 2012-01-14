@@ -116,6 +116,19 @@
         return YES;
     } else {
         [letter setState:ANTypingTestLetterStateIncorrect];
+        if (kSpaceJumpsWords && isspace(theChar)) {
+            // jump until it reaches the space.
+            for (NSUInteger i = currentLetter; i < [letters count]; i++) {
+                ANTypingTestLetter * aLetter = [letters objectAtIndex:i];
+                if ([[letters objectAtIndex:i] letter] == theChar) {
+                    [aLetter setState:ANTypingTestLetterStateCorrect];
+                    currentLetter = i + 1;
+                    break;
+                } else {
+                    [aLetter setState:ANTypingTestLetterStateIncorrect];
+                }
+            }
+        }
         return NO;
     }
 }

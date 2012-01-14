@@ -10,6 +10,8 @@
 #import "ANTypingTestLetter.h"
 #import "ANTestTimePeriod.h"
 
+#define kSpaceJumpsWords YES
+
 @interface ANTypingTest : NSObject <NSCoding> {
     ANTestTimePeriod * currentPeriod;
     NSMutableArray * previousPeriods;
