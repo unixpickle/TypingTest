@@ -25,13 +25,6 @@
 - (void)windowControllerDidLoadNib:(NSWindowController *)aController {
     [super windowControllerDidLoadNib:aController];
     
-    if (!loadedTest) {
-        ANTypingTest * defaultTest = [[ANTypingTest alloc] initWithTestString:@"The quick brown fox."];
-        [self loadTest:defaultTest];
-    } else if (!testContainer) {
-        [self loadTest:loadedTest];
-    }
-    
     editButton = [[NSButton alloc] initWithFrame:NSMakeRect(10, 120, 80, 24)];
     [editButton setBezelStyle:NSRoundedBezelStyle];
     [editButton setTitle:@"Edit"];
@@ -43,6 +36,18 @@
     [timeField setFrame:NSMakeRect(15, 15, 100, 20)];
     [timeField setStringValue:@"Time: 0:00"];
     [[self mainWindow].contentView addSubview:timeField];
+    
+    wpmField = [NSTextField labelTextField];
+    [wpmField setFrame:NSMakeRect(15, 45, 100, 20)];
+    [wpmField setStringValue:@"WPM: 0"];
+    [[self mainWindow].contentView addSubview:wpmField];
+    
+    if (!loadedTest) {
+        ANTypingTest * defaultTest = [[ANTypingTest alloc] initWithTestString:@"The quick brown fox."];
+        [self loadTest:defaultTest];
+    } else if (!testContainer) {
+        [self loadTest:loadedTest];
+    }
 }
 
 - (NSData *)dataOfType:(NSString *)typeName error:(NSError **)outError {
@@ -114,6 +119,7 @@
     [window makeFirstResponder:testContainer];
     
     [testView setDelegate:self];
+    [self updateStatistics];
 }
 
 #pragma mark Text Delegate
@@ -126,6 +132,7 @@
 }
 
 - (void)typingTestViewTestCompleted:(ANTypingTestView *)testView {
+    [self updateStatistics];
     [testUpdateTimer invalidate];
     testUpdateTimer = nil;
 }
@@ -140,10 +147,14 @@
     ANTypingTest * test = testContainer.testView.typingTest;
     NSTimeInterval totalTime = round([test totalTime]);
     NSUInteger wordCount = [test wordsCompleteCount];
-    NSUInteger mistakeCount = [test mistakeCount];
+    // NSUInteger mistakeCount = [test mistakeCount];
     NSString * timeString = [NSString stringWithFormat:@"Time: %d:%02d",
                              (int)floor(totalTime / 60.0), (int)totalTime % 60];
+    NSString * wpmString = [NSString stringWithFormat:@"WPM: %d",
+                            (int)round((float)wordCount / (totalTime / 60.0))];
+    if (totalTime <= 0) wpmString = @"WPM: 0";
     [timeField setStringValue:timeString];
+    [wpmField setStringValue:wpmString];
 }
 
 @end
