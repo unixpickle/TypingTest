@@ -31,6 +31,13 @@
     } else if (!testContainer) {
         [self loadTest:loadedTest];
     }
+    
+    editButton = [[NSButton alloc] initWithFrame:NSMakeRect(10, 120, 80, 24)];
+    [editButton setBezelStyle:NSRoundedBezelStyle];
+    [editButton setTitle:@"Edit"];
+    [editButton setTarget:self];
+    [editButton setAction:@selector(modifyTestText:)];
+    [[[self mainWindow] contentView] addSubview:editButton];
 }
 
 - (NSData *)dataOfType:(NSString *)typeName error:(NSError **)outError {
@@ -55,8 +62,20 @@
     return NO;
 }
 
+#pragma mark - User Interface -
+
 - (NSWindow *)mainWindow {
     return [[[self windowControllers] objectAtIndex:0] window];
+}
+
+#pragma mark UI Actions
+
+- (void)modifyTestText:(id)sender {
+    EnterTextWindow * window = [[EnterTextWindow alloc] initWithSize:NSMakeSize(300, 120) initialText:@""];
+    [NSApp beginSheet:window modalForWindow:[self mainWindow] modalDelegate:self didEndSelector:nil contextInfo:NULL];
+    [NSApp runModalForWindow:window];
+    [NSApp endSheet:window];
+    [window orderOut:nil];
 }
 
 #pragma mark - Test Container -

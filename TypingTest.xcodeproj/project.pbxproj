@@ -22,6 +22,7 @@
 		FAC4197314B24C120035FFAF /* KeyWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC4197214B24C120035FFAF /* KeyWindow.m */; };
 		FACBE31D14B8D1030097F3E5 /* ANTextFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = FACBE31C14B8D1030097F3E5 /* ANTextFrame.m */; };
 		FACBE32014B8D17B0097F3E5 /* ANTextLine.m in Sources */ = {isa = PBXBuildFile; fileRef = FACBE31F14B8D17B0097F3E5 /* ANTextLine.m */; };
+		FACDDC4B14C122CF00245195 /* EnterTextWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = FACDDC4A14C122CF00245195 /* EnterTextWindow.m */; };
 		FAD3115A14C0F2A0004A4CA8 /* TestDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD3115814C0F2A0004A4CA8 /* TestDocument.m */; };
 		FAD3115B14C0F2A0004A4CA8 /* TestDocument.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAD3115914C0F2A0004A4CA8 /* TestDocument.xib */; };
 		FAD3115D14C0FC29004A4CA8 /* docicon.icns in Resources */ = {isa = PBXBuildFile; fileRef = FAD3115C14C0FC29004A4CA8 /* docicon.icns */; };
@@ -59,6 +60,8 @@
 		FACBE31C14B8D1030097F3E5 /* ANTextFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANTextFrame.m; sourceTree = "<group>"; };
 		FACBE31E14B8D17B0097F3E5 /* ANTextLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ANTextLine.h; sourceTree = "<group>"; };
 		FACBE31F14B8D17B0097F3E5 /* ANTextLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ANTextLine.m; sourceTree = "<group>"; };
+		FACDDC4914C122CF00245195 /* EnterTextWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnterTextWindow.h; sourceTree = "<group>"; };
+		FACDDC4A14C122CF00245195 /* EnterTextWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnterTextWindow.m; sourceTree = "<group>"; };
 		FAD3115714C0F2A0004A4CA8 /* TestDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestDocument.h; sourceTree = "<group>"; };
 		FAD3115814C0F2A0004A4CA8 /* TestDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestDocument.m; sourceTree = "<group>"; };
 		FAD3115914C0F2A0004A4CA8 /* TestDocument.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestDocument.xib; sourceTree = "<group>"; };
@@ -186,6 +189,8 @@
 				FAD3115714C0F2A0004A4CA8 /* TestDocument.h */,
 				FAD3115814C0F2A0004A4CA8 /* TestDocument.m */,
 				FAD3115914C0F2A0004A4CA8 /* TestDocument.xib */,
+				FACDDC4914C122CF00245195 /* EnterTextWindow.h */,
+				FACDDC4A14C122CF00245195 /* EnterTextWindow.m */,
 			);
 			name = Document;
 			sourceTree = "<group>";
@@ -267,6 +272,7 @@
 				FACBE32014B8D17B0097F3E5 /* ANTextLine.m in Sources */,
 				2E9196C114BCCC84003344F9 /* ANTestTimePeriod.m in Sources */,
 				FAD3115A14C0F2A0004A4CA8 /* TestDocument.m in Sources */,
+				FACDDC4B14C122CF00245195 /* EnterTextWindow.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

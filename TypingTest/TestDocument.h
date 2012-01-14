@@ -8,6 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 #import "ANTypingTestContainer.h"
+#import "EnterTextWindow.h"
 
 @interface TestDocument : NSDocument {
     ANTypingTest * loadedTest;
@@ -19,5 +20,7 @@
 
 - (void)loadTest:(ANTypingTest *)theTest;
 - (NSWindow *)mainWindow;
+
+- (void)modifyTestText:(id)sender;
 
 @end

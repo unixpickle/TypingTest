@@ -47,6 +47,7 @@
     ANTestTimePeriod * period = [[ANTestTimePeriod allocWithZone:zone] init];
     [period setStartDate:[startDate copyWithZone:zone]];
     [period setEndDate:[endDate copyWithZone:zone]];
+    return period;
 }
 
 @end
