@@ -59,7 +59,7 @@
         
         CTParagraphStyleRef pStyle = CTParagraphStyleCreate(settings, 2);
         CFAttributedStringSetAttribute(testString, CFRangeMake(0, [typingTest.letters count]), kCTParagraphStyleAttributeName, pStyle);
-        CFRetain(pStyle);
+        CFRelease(pStyle);
         
         // initial character states
         for (NSUInteger i = 0; i < [[theTest letters] count]; i++) {
